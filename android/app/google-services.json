@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1027460266945",
+    "project_id": "gestion-fournisseur-e5162",
+    "storage_bucket": "gestion-fournisseur-e5162.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1027460266945:android:9f18e7502c1db52ca44d40",
+        "android_client_info": {
+          "package_name": "com.example.gestion_fournisseur"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCT_p0khRE1JOMjxqhP7AgRaHhvOfTVLWM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
