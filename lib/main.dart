@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:gestion_fournisseur/controllers/dark_light_mode_controller.dart';
+import 'package:gestion_fournisseur/controllers/session_variables_controller.dart';
 import 'package:gestion_fournisseur/controllers/translations_controller.dart';
 import 'package:gestion_fournisseur/locale/translations.dart';
 import 'package:get/get.dart';
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
+    Get.put(SessionVariableController());
     Get.put(DarkLightModeController());
     Get.put(TranslationsController());
 

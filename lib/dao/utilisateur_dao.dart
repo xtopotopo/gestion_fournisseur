@@ -33,12 +33,12 @@ class UtilisateurDao{
   }
 
   //Get User by email
-  Future<Utilisateur> getUtilisateur(String email) async{
+  Future<DocumentSnapshot> getUtilisateur(String email) async{
     QuerySnapshot querySnapshot = await _utilisateurs
     .where("email", isEqualTo: email)
     .get();
   
-    return querySnapshot.docs.first.data() as Utilisateur;  
+    return querySnapshot.docs.first;  
   }
 
   // Email verification method

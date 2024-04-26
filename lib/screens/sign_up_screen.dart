@@ -61,20 +61,20 @@ class SignUpScreen extends GetView{
             child:  Column(
               children: 
               [
-                const Row(
+                Row(
                   children: [
-                    Expanded(child: Divider()),
+                    const Expanded(child: Divider()),
                     Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 7.0),
+                      padding:const EdgeInsets.symmetric(horizontal: 7.0),
                       child: Text(
-                        "Veulliez Saisir vos information",
-                        style: TextStyle(
+                        '2'.tr,
+                        style:const TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w500
                         ),
                       ),
                     ),
-                    Expanded(child: Divider()),
+                    const Expanded(child: Divider()),
                   ],
                 ),
                   const SizedBox(height: 15,),

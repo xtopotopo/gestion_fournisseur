@@ -2,6 +2,7 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:gestion_fournisseur/controllers/session_variables_controller.dart';
 import 'package:gestion_fournisseur/dao/authentification_dao.dart';
 import 'package:gestion_fournisseur/dao/utilisateur_dao.dart';
 import 'package:gestion_fournisseur/models/utilisateur.dart';
@@ -80,6 +81,10 @@ class AuthentificationController extends GetxController{
   // SignIn method
   Future<void> signIn({required BuildContext context,required TextEditingController email,required TextEditingController password}) async{
     try{
+
+      String emailText = email.text.trim();
+      String passwordText= password.text.trim();
+
       showDialog(
         context: context, 
         barrierDismissible: false,
@@ -92,14 +97,17 @@ class AuthentificationController extends GetxController{
         }
       );
       await _authentificationDao.signIn(
-        email: email.text.trim(), 
-        password: password.text.trim()
+        email: emailText, 
+        password: passwordText
       );
+
+      Get.find<SessionVariableController>().userID=(await _utilisateurDao.getUtilisateur(emailText)).id;
+      Get.find<SessionVariableController>().user=((await _utilisateurDao.getUtilisateur(emailText)).data()) as Utilisateur;
+
 
       Navigator.pop(context);
 
-      print(email.text.trim());
-      print(password.text.trim());
+
       
       //get.to.....
     }on FirebaseAuthException catch(e){
@@ -119,20 +127,18 @@ class AuthentificationController extends GetxController{
         barrierDismissible: false,
         builder: (constext){
           return Center(
-                child: CircularProgressIndicator(
-                  color: Theme.of(context).colorScheme.secondary,
-                ),
-              );
+            child: CircularProgressIndicator(
+              color: Theme.of(context).colorScheme.secondary,
+            ),
+          );
         }
       );
 
       String email=emailController.text.trim();
 
-      print(email);
       
       bool exists=await _utilisateurDao.emailExists(email);
       
-      print("pass");
 
       if(!exists) throw Exception('account-not-found');
       
