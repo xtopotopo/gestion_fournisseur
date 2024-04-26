@@ -12,7 +12,7 @@ class UtilisateurDao{
     _utilisateurs=FirebaseFirestore.instance
     .collection(NomsDesCollections.collectionUtilisateure)
     .withConverter<Utilisateur>(
-      fromFirestore: (snapshot,_)=>Utilisateur.fromJson(snapshot as Map<String,dynamic>), 
+      fromFirestore: (snapshot,_)=>Utilisateur.fromJson(snapshot.data() as Map<String,dynamic>), 
       toFirestore: (utilisateur,_)=>utilisateur.toJson()
     );
   }
@@ -35,29 +35,25 @@ class UtilisateurDao{
   //Get User by email
   Future<Utilisateur> getUtilisateur(String email) async{
     QuerySnapshot querySnapshot = await _utilisateurs
-      .where("email", isEqualTo: email)
-      .get();
+    .where("email", isEqualTo: email)
+    .get();
   
     return querySnapshot.docs.first.data() as Utilisateur;  
   }
 
   // Email verification method
-  Future<bool> emailExists(String email) async {
-  QuerySnapshot querySnapshot = await _utilisateurs
-      .where("email", isEqualTo: email)
-      .get();
+  Future<bool> emailExists(String email) async{
+    QuerySnapshot querySnapshot = await _utilisateurs
+    .where("email", isEqualTo: email)
+    .get();
+    
 
-  if (querySnapshot.docs.isNotEmpty) {
-    for (var doc in querySnapshot.docs) {
-      if ((doc.data() as Utilisateur).email == email) {
-        return true;
-      }
+    if(querySnapshot.docs.isNotEmpty){
+      return true;
     }
+
+    return false;
   }
-
-  return false;
-}
-
 
   // Get a Sream of <Utilisateur> method
   Stream<QuerySnapshot> getUtilisateurs(){

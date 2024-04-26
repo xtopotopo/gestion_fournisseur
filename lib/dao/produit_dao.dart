@@ -12,7 +12,7 @@ class ProduitDao {
     .doc(fournisseurId)
     .collection(NomsDesCollections.collectionProduit)
     .withConverter<Produit>(
-      fromFirestore: (snapshot,_)=>Produit.fromJson(snapshot as Map<String,dynamic>), 
+      fromFirestore: (snapshot,_)=>Produit.fromJson(snapshot.data() as Map<String,dynamic>), 
       toFirestore: (produit,_)=>produit.toJson()
     );
   }

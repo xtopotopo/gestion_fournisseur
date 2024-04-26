@@ -4,14 +4,19 @@ import 'package:gestion_fournisseur/models/fournisseur.dart';
 
 class FournisseurDao{
 
-  late CollectionReference _fournisseurs;
+  late CollectionReference _fournisseurs=FirebaseFirestore.instance
+    .collection(NomsDesCollections.collectionFournisseur)
+    .withConverter<Fournisseur>(
+      fromFirestore: (snapshot,_)=>Fournisseur.fromJson(snapshot.data() as Map<String,dynamic>), 
+      toFirestore: (fournisseur,_)=>fournisseur.toJson()
+    );
 
   FournisseurDao(){
     _fournisseurs=FirebaseFirestore.instance
     .collection(NomsDesCollections.collectionFournisseur)
     .withConverter<Fournisseur>(
-      fromFirestore: (snapshot,_)=>Fournisseur.fromJson(snapshot as Map<String,dynamic>), 
-      toFirestore: (produit,_)=>produit.toJson()
+      fromFirestore: (snapshot,_)=>Fournisseur.fromJson(snapshot.data() as Map<String,dynamic>), 
+      toFirestore: (fournisseur,_)=>fournisseur.toJson()
     );
   }
 

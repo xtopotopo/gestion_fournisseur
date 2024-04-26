@@ -2,7 +2,6 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:gestion_fournisseur/dao/authentification_dao.dart';
 import 'package:gestion_fournisseur/dao/utilisateur_dao.dart';
 import 'package:gestion_fournisseur/models/utilisateur.dart';
@@ -133,7 +132,9 @@ class AuthentificationController extends GetxController{
       
       bool exists=await _utilisateurDao.emailExists(email);
       
-      if(exists) throw Exception('email-already-in-use');
+      print("pass");
+
+      if(!exists) throw Exception('account-not-found');
       
       await _authentificationDao.resetPassword(email);
 
@@ -142,7 +143,10 @@ class AuthentificationController extends GetxController{
       
     }on FirebaseAuthException catch(e){
       Navigator.pop(context);
-      print(e.code);
+      printError(info:e.code);
+    }on Exception catch(e){
+      Navigator.pop(context);
+      printError(info: e.toString());
     }
   }
 }
