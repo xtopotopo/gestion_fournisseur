@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 
 class CustomButton extends GetView{
 
-  const CustomButton({super.key});
+  const CustomButton({super.key, required Null Function() onPressed});
 
   @override
   Widget build(BuildContext context) {

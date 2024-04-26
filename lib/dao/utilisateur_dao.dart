@@ -42,17 +42,22 @@ class UtilisateurDao{
   }
 
   // Email verification method
-  Future<bool> emailExists(String email) async{
-    QuerySnapshot querySnapshot = await _utilisateurs
-    .where("email", isEqualTo: email)
-    .get();
+  Future<bool> emailExists(String email) async {
+  QuerySnapshot querySnapshot = await _utilisateurs
+      .where("email", isEqualTo: email)
+      .get();
 
-    if(querySnapshot.docs.isNotEmpty){
-      return true;
+  if (querySnapshot.docs.isNotEmpty) {
+    for (var doc in querySnapshot.docs) {
+      if ((doc.data() as Utilisateur).email == email) {
+        return true;
+      }
     }
-
-    return false;
   }
+
+  return false;
+}
+
 
   // Get a Sream of <Utilisateur> method
   Stream<QuerySnapshot> getUtilisateurs(){

@@ -70,15 +70,15 @@ class CustomTextField extends GetView {
         return TextFormField(
           validator: (value) {
             if (value == null || value.isEmpty) {
-              return "Ce champ est vide";
+              return '13'.tr;
             }
             return InputValidation.isEmailValid(value);
           },
           controller: _controller,         
           obscureText: false,
-          decoration:const InputDecoration(
-            prefixIcon: Icon(Icons.email_rounded),
-            labelText: "Email"
+          decoration: InputDecoration(
+            prefixIcon: const Icon(Icons.email_rounded),
+            labelText: '14'.tr
           ),
           keyboardType: TextInputType.emailAddress,
         );
@@ -88,7 +88,7 @@ class CustomTextField extends GetView {
         return  TextFormField(
           validator: (value) {
             if (value == null || value.isEmpty) {
-              return "Ce champ est vide";
+              return '13'.tr;
             }
             return null;
           },
@@ -106,7 +106,7 @@ class CustomTextField extends GetView {
         return TextFormField(
           validator: (value) {
             if (value == null || value.isEmpty) {
-              return "Ce champ est vide";
+              return '13'.tr;
             }
             return InputValidation.isNumberValid(value);
           },
@@ -125,7 +125,7 @@ class CustomTextField extends GetView {
         return TextFormField(
           validator: (value) {
             if (value == null || value.isEmpty) {
-              return "Ce champ est vide";
+              return '13'.tr;
             }
             return InputValidation.isNameValid(value);
           },
@@ -143,15 +143,15 @@ class CustomTextField extends GetView {
         return TextFormField(
           validator: (value) {
             if (value == null || value.isEmpty) {
-              return "Ce champ est vide";
+              return '13'.tr;
             }
             return InputValidation.isPasswordValid(value);
           },
           controller: _controller,
           obscureText: true,
-          decoration:const InputDecoration(
-            prefixIcon: Icon(Icons.password_rounded),
-            labelText: "Confirmation password"
+          decoration: InputDecoration(
+            prefixIcon:const Icon(Icons.password_rounded),
+            labelText: "15".tr
           ),
           keyboardType: TextInputType.multiline,
         );
@@ -161,15 +161,15 @@ class CustomTextField extends GetView {
         return TextFormField(
           validator: (value) {
             if (value == null || value.isEmpty) {
-              return "Ce champ est vide";
+              return '13'.tr;
             }
             return InputValidation.isPhoneNumberValid(value);
           },
           controller: _controller,
           obscureText: false,
-          decoration:const InputDecoration(
-            prefixIcon: Icon(Icons.phone),
-            labelText: "Numero"
+          decoration: InputDecoration(
+            prefixIcon:const Icon(Icons.phone),
+            labelText: "16".tr
           ),
           keyboardType: TextInputType.number,
         );
@@ -179,15 +179,15 @@ class CustomTextField extends GetView {
         return TextFormField(
           validator: (value) {
             if (value == null || value.isEmpty) {
-              return "Ce champ est vide";
+              return '13'.tr;
             }
             return InputValidation.isCinValid(value);
           },
           controller: _controller,
           obscureText: false,
-          decoration:const InputDecoration(
-            prefixIcon: Icon(Icons.perm_identity_rounded),
-            labelText: "Cin"
+          decoration: InputDecoration(
+            prefixIcon:const Icon(Icons.perm_identity_rounded),
+            labelText: "17".tr
           ),
           keyboardType: TextInputType.multiline,
         );
@@ -198,7 +198,7 @@ class CustomTextField extends GetView {
             return TextFormField(
               validator: (value) {
                 if (value == null || value.isEmpty) {
-                  return "Ce champ est vide";
+                  return '13'.tr;
                 }
                 return InputValidation.isPasswordValid(value);
               },
@@ -212,7 +212,7 @@ class CustomTextField extends GetView {
                   }, 
                   icon:controller.icon
                 ),
-                labelText: "Password"
+                labelText: '18'.tr
               ),
               keyboardType: TextInputType.multiline,
             );

@@ -6,7 +6,7 @@ class  InputValidation {
   static String? isEmailValid(String email) {
     
     final RegExp regex = RegExp(r'^[\w\-\.]+@([\w-]+\.)+[\w-]{2,}$',);
-    if(!regex.hasMatch(email)) return"Adresse e-mail invalide".tr;
+    if(!regex.hasMatch(email)) return '7'.tr;
     return null;
 
   }
@@ -14,7 +14,7 @@ class  InputValidation {
   static String? isPasswordValid(String pasword) {
     
     final RegExp regex = RegExp(r'^[a-zA-Z0-9._%+-@#]{9,15}$',);
-    if(!regex.hasMatch(pasword)) return"Mot de passe invalide".tr;
+    if(!regex.hasMatch(pasword)) return '8'.tr;
     return null;
     
   }
@@ -22,7 +22,7 @@ class  InputValidation {
   static String? isNameValid(String lastName) {
     
     final RegExp regex = RegExp(r'^[a-zA-z ]{3,25}$',);
-    if(!regex.hasMatch(lastName)) return"Nom invalide".tr;
+    if(!regex.hasMatch(lastName)) return '9'.tr;
     return null;
     
   }
@@ -33,7 +33,7 @@ class  InputValidation {
     
     final RegExp regex = RegExp(r'^[A-z][0-9]{6}$$',);
     final RegExp regex2 = RegExp(r'^[A-z]{2}[0-9]{5}$',);
-    if(!regex.hasMatch(cin) && !regex2.hasMatch(cin)) return"Prenom invalide".tr;
+    if(!regex.hasMatch(cin) && !regex2.hasMatch(cin)) return '10'.tr;
     return null;
     
   }
@@ -42,7 +42,7 @@ class  InputValidation {
     
     final RegExp regex = RegExp(r'^0[67][0-9]{8}$',);
   
-    if(!regex.hasMatch(cin)) return"Cin invalide".tr;
+    if(!regex.hasMatch(cin)) return '11'.tr;
     return null;
     
   }
@@ -51,7 +51,7 @@ class  InputValidation {
     
     final RegExp regex = RegExp(r'^[0-9]*$',);
   
-    if(!regex.hasMatch(cin)) return"Cin invalide".tr;
+    if(!regex.hasMatch(cin)) return '12'.tr;
     return null;
     
   }

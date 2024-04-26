@@ -1,12 +1,10 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
-import 'package:gestion_fournisseur/controllers/authentification_Controller.dart';
-import 'package:gestion_fournisseur/controllers/dark_light_mode_controller.dart';
+import 'package:gestion_fournisseur/controllers/authentification_controller.dart';
 import 'package:gestion_fournisseur/widgets/custom_text_field.dart';
 import 'package:get/get.dart';
-
-import 'screen_widgets/language_bottom_sheet.dart';
+import '../widgets/custom_app_bar.dart';
 
 final _loginFormKey = GlobalKey<FormState>();
 
@@ -15,114 +13,57 @@ class SignInScreen extends GetView{
   late TextEditingController _emailController;
   late TextEditingController _passwordController;
 
-
-  SignInScreen({super.key}){
+  SignInScreen({super.key,String? name}){
     _emailController=TextEditingController();
     _passwordController=TextEditingController();
+    
   }
 
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("1".tr),
-        actions: [
-          GetBuilder<DarkLightModeController>(
-            builder: (controller) {
-              return IconButton(
-                onPressed: (){
-                  controller.toogle();
-                }, 
-                icon: controller.icon,
-              );
-            }
-          ),
-          PopupMenuButton<String>(
-            shape: RoundedRectangleBorder(
-              borderRadius:BorderRadius.circular(15), // Customize the radius here
-            ),
-            itemBuilder: (context)=>[
-               PopupMenuItem(
-                value: "language",
-                child: Row(
-                  children: [
-                     Icon(
-                      Icons.language_rounded,
-                      color: Theme.of(context).colorScheme.onBackground,
-                    ),
-                    const Padding(
-                      padding:  EdgeInsets.symmetric(horizontal: 4.0),
-                      child:  Text("  "),
-                    ),
-                    const Text("Language")
-                  ],
-                )
-              ),
-              if(Get.currentRoute!="/")
-              const PopupMenuItem(
-                value: "themes",
-                child: Row(
-                  children: [
-                     Icon(
-                      Icons.color_lens_rounded,
-                      color: Colors.white,
-                    ),
-                    Padding(
-                      padding:  EdgeInsets.symmetric(horizontal: 4.0),
-                      child:  Text("  "),
-                    ),
-                    Text("Themes")
-                  ],
-                )
-              )
-            ],
-            onSelected:  (value) {
-              switch (value) {
-                case "language":
-                  LanguageBottomSheet.show(context);
-                  break;
-                case "themes":
-                  
-                  break;
-              }
-            },
-          )
-        ],
-      ),
+      appBar: CustomAppBar(),
       backgroundColor: Theme.of(context).colorScheme.background,
       body: Padding(
-        padding: const EdgeInsets.all(30.0),
+        padding: const EdgeInsets.symmetric(horizontal:30.0),
         child: ListView(
           children: [
-             Row(
-             children: [
-               Icon(
-                 Icons.change_circle_rounded,
-                 size: 310,
-                 color: Theme.of(context).colorScheme.secondary,
-               ),
-             ],
-                         ),
+            const SizedBox(height: 30,),
+             Hero(
+              tag: "logo",
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: Icon(
+                      Icons.change_circle_rounded,
+                      size: 310,
+                      color: Theme.of(context).colorScheme.secondary,
+                    ),
+                  ),
+                ],
+              ),
+            ),
             const SizedBox(height: 25,),
             Form(
               key: _loginFormKey,
               child: Column(
                 children: [
-                  const Row(
+                   Row(
                     children: [
-                      Expanded(child: Divider()),
+                      const Expanded(child: Divider()),
                       Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 7.0),
+                        padding:const EdgeInsets.symmetric(horizontal: 7.0),
                         child: Text(
-                          "Veulliez Saisir vos information",
-                          style: TextStyle(
+                          '2'.tr,
+                          style:const TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w500
                           ),
                         ),
                       ),
-                      Expanded(child: Divider()),
+                      const Expanded(child: Divider()),
                     ],
                   ),
                   const SizedBox(height: 20,),
@@ -135,11 +76,16 @@ class SignInScreen extends GetView{
                     children: 
                     [
                       
-                      Text(
-                        "Mot de passe oublie ?",
-                        style: TextStyle(
-                          color: Theme.of(context).colorScheme.secondary,
-                          fontWeight: FontWeight.w600
+                      GestureDetector(
+                        onTap: (){
+                          Get.toNamed("resetPasswordScreen");
+                        },
+                        child: Text(
+                          '3'.tr,
+                          style: TextStyle(
+                            color: Theme.of(context).colorScheme.secondary,
+                            fontWeight: FontWeight.w600
+                          ),
                         ),
                       )
                     ],
@@ -156,25 +102,25 @@ class SignInScreen extends GetView{
                         
                       }
                     }, 
-                    child:const Text('Se conecter')
+                    child: Text('4'.tr)
                   ),
                   const SizedBox(height: 15,),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: 
                     [
-                      const Text(
-                        "Vous n'avez pas de compte? ",
-                        style: TextStyle(
+                      Text(
+                        '5'.tr,
+                        style:const TextStyle(
                           fontWeight: FontWeight.w600,
                         ),
                       ),
                       GestureDetector(
                         onTap: (){
-                  
+                          Get.toNamed("/signUpScreen");
                         },
                         child: Text(
-                          "Creer un",
+                          '6'.tr,
                           style: TextStyle(
                             color: Theme.of(context).colorScheme.secondary,
                             fontWeight: FontWeight.w600
@@ -194,3 +140,4 @@ class SignInScreen extends GetView{
   }
 
 }
+

@@ -1,4 +1,4 @@
-import 'package:gestion_fournisseur/controllers/authentification_Controller.dart';
+import 'package:gestion_fournisseur/controllers/authentification_controller.dart';
 import 'package:get/get.dart';
 
 import '../controllers/password_text_field_controller.dart';

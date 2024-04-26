@@ -71,6 +71,6 @@ class Utilisateur{
   //toString method
   @override
   String toString() {
-    return 'Utilisateur{_nom: $_nom, _prenom: $_prenom, _email: $_email, _numero: $_numero, _cin: $_cin, _mdp: $_mdp}';
+    return 'Utilisateur{\n\t_nom: $_nom,\n\t_prenom: $_prenom,\n\t_email: $_email,\n\t_numero: $_numero,\n\t_cin: $_cin,\n\t_mdp: $_mdp\n}';
   }
 }
