@@ -37,6 +37,8 @@ class FournisseurDao{
 
   // get Stream of <Fournisseur> methode
   Stream<QuerySnapshot> getFournisseur(){
-    return _fournisseurs.snapshots();
+    return _fournisseurs.orderBy("nom",descending: false).snapshots();
   }
+
+  
 }

@@ -30,6 +30,8 @@ class AppTranslations implements Translations{
       '23':"الرجاء إدخال بريدك الإلكتروني",
       '24':"اللغة",
       '25':"السمات",
+      '26':"بحث",
+      "27":"لا يوجد مورّد",
     },
 
 
@@ -59,6 +61,8 @@ class AppTranslations implements Translations{
       '23':"Please enter your email",
       '24':"Language",
       '25':"Themes",
+      '26':"Search",
+      '27':"There is no supplier",
     },
 
 
@@ -88,6 +92,8 @@ class AppTranslations implements Translations{
       '23':"Veuillez saisir votre email",
       '24':"Language",
       '25':"Themes",
+      '26':"Rechercher",
+      '27':"l n'y a pas de fournisseur",
     }
   };
 }

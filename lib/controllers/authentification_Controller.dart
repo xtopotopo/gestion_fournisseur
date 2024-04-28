@@ -109,7 +109,7 @@ class AuthentificationController extends GetxController{
 
 
       
-      //get.to.....
+      Get.offAllNamed("fournisseurScreen");
     }on FirebaseAuthException catch(e){
       Navigator.pop(context);
       printError(info: e.code);

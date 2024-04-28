@@ -60,6 +60,10 @@ class CustomTextField extends GetView {
     _controller=controller;
   }
 
+  CustomTextField.search({super.key,required TextEditingController controller}){
+    _type=TextFieldType.search;
+    _controller=controller;
+  }
   
   @override
   Widget build(BuildContext context) {
@@ -218,7 +222,33 @@ class CustomTextField extends GetView {
             );
           }
         );
-    }
+      case TextFieldType.search:
+        return TextFormField(
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return '13'.tr;
+                }
+                return null;
+              },
+              controller: _controller,
+              obscureText: false,
+              decoration: InputDecoration(
+                filled: true,
+                prefixIcon: const Icon(Icons.search_rounded,size: 10,),
+                suffix: IconButton(
+                  onPressed: (){
+                    controller.toogle();
+                  }, 
+                  icon:Icon(
+                    Icons.cancel,
+                    size: 20,
+                    )
+                ),
+                hintText: 'Search'
+              ),
+              keyboardType: TextInputType.multiline,
+            );
+          }
   }
 
   
@@ -232,5 +262,6 @@ enum TextFieldType {
   password,
   confirmationPassword,
   names,
-  id
+  id,
+  search
 }

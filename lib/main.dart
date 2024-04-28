@@ -28,6 +28,7 @@ class MyApp extends StatelessWidget {
     Get.put(DarkLightModeController());
     Get.put(TranslationsController());
 
+
     return GetMaterialApp(
       locale: Locale(Get.find<TranslationsController>().chosenLanguage),
       getPages: AppPages.routes,

@@ -55,4 +55,13 @@ class  InputValidation {
     return null;
     
   }
+
+  static String? isTextValid(String cin) {
+    
+    final RegExp regex = RegExp(r'^[azAZ ]$',);
+  
+    if(!regex.hasMatch(cin)) return '11'.tr;
+    return null;
+    
+  }
 }

@@ -16,7 +16,7 @@ class CustomAppBar extends GetView implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       toolbarHeight: 50,
-      title: Text("${"1".tr} $_title"),
+      title:(Get.currentRoute!="/") ?Text("${"1".tr} $_title"):null,
       actions: [
         Hero(
           tag: "tag-3",
