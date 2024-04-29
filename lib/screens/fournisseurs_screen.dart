@@ -73,11 +73,12 @@ class FournisseurSceen extends GetView {
                     itemCount: fournisseurs.length,
                     itemBuilder: (context, index) {
                       final currentFournisseur = fournisseurs[index].data() as Fournisseur;
-                      final nom = currentFournisseur.nom.toLowerCase();
-                      final numero = currentFournisseur.numero.toLowerCase();
+                      final nom = currentFournisseur.nom.trim().toLowerCase();
+                      final email = currentFournisseur.email.trim().toLowerCase();
+                      final numero = currentFournisseur.numero.trim().toLowerCase();
                       final searchQuery = _searchController.text.trim().toLowerCase();
     
-                      if (!controller.onSearch || nom.contains(searchQuery) || numero.contains(searchQuery)) {
+                      if (!controller.onSearch || nom.contains(searchQuery) || numero.contains(searchQuery) || email.contains(searchQuery)) {
                         return FournisseurContainer(fournisseurs[index]);
                       } else {
                         
