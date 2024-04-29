@@ -32,6 +32,10 @@ class AppTranslations implements Translations{
       '25':"السمات",
       '26':"بحث",
       "27":"لا يوجد مورّد",
+      '28': 'إضافة',
+      '29': 'إلغاء',
+      '30': 'اسم',
+      '31':"إضافة مورد",
     },
 
 
@@ -63,6 +67,10 @@ class AppTranslations implements Translations{
       '25':"Themes",
       '26':"Search",
       '27':"There is no supplier",
+      '28':"Add",
+      '29':"Cancel",
+      '30':'Name',
+      '31':"Add a supplier",
     },
 
 
@@ -94,6 +102,10 @@ class AppTranslations implements Translations{
       '25':"Themes",
       '26':"Rechercher",
       '27':"l n'y a pas de fournisseur",
+      '28':"Ajouter",
+      '29':"Annuler",
+      '30':'Nom',
+      '31':"Ajouter un fournisseur",
     }
   };
 }

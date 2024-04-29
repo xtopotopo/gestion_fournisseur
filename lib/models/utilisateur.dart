@@ -29,11 +29,11 @@ class Utilisateur{
   );
 
   Map<String,dynamic> toJson()=>{
-    'nom':_nom,
-    'prenom':_prenom,
-    'email':_email,
-    'numero':_numero,
-    'cin':_cin,
+    'nom':_nom.trim().toLowerCase(),
+    'prenom':_prenom.trim().toLowerCase(),
+    'email':_email.trim().toLowerCase(),
+    'numero':_numero.trim().toLowerCase(),
+    'cin':_cin.trim().toLowerCase(),
   };
 
   //CopyWith method

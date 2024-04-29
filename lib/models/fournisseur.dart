@@ -32,9 +32,9 @@ class Fournisseur{
 
   //To-From Json parse Methods
   Map<String,dynamic> toJson()=>{
-    "nom":_nom,
-    "email":_email,
-    "numero":_numero
+    "nom":_nom.trim().toLowerCase(),
+    "email":_email.trim().toLowerCase(),
+    "numero":_numero.trim().toLowerCase()
   };
 
   factory Fournisseur.fromJson(Map<String,dynamic> json)=>Fournisseur(

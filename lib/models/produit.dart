@@ -45,10 +45,10 @@ class Produit{
     );
 
     Map<String,dynamic> toJson()=>{
-      "nom":_nom,
-      'description':_description,
+      "nom":_nom.trim().toLowerCase(),
+      'description':_description.trim().toLowerCase(),
       'prixUnite':_prixUnite,
-      'unite':_unite,
+      'unite':_unite.trim().toLowerCase(),
       'quantite':_quantite,
       'date':_date,
     };

@@ -150,6 +150,7 @@ class Themes{
       onPrimary: Colors.white70,
       secondary: Colors.green,
       onSecondary: Colors.grey[400] as Color,
+      primaryContainer: Color.fromARGB(255, 29, 29, 29)
     ),
 
     // Appbar Theme
