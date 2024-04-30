@@ -36,6 +36,9 @@ class AppTranslations implements Translations{
       '29': 'إلغاء',
       '30': 'اسم',
       '31':"إضافة مورد",
+      '32':"لا يوجد منتج",
+      '33':"حدثت مشكلة، يرجى المحاولة مرة أخرى لاحقًا",
+      '34':"تفاصيل",
     },
 
 
@@ -71,6 +74,9 @@ class AppTranslations implements Translations{
       '29':"Cancel",
       '30':'Name',
       '31':"Add a supplier",
+      '32':"There is no product",
+      '33':"An issue occurred, please try again later",
+      '34':"Details",
     },
 
 
@@ -106,6 +112,9 @@ class AppTranslations implements Translations{
       '29':"Annuler",
       '30':'Nom',
       '31':"Ajouter un fournisseur",
+      '32':"Il n'existe aucun produit",
+      '33':"Un problème est survenu, veuillez réessayer ultérieurement",
+      '34':"Details",
     }
   };
 }

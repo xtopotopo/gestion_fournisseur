@@ -8,7 +8,7 @@ class FournisseurContainer extends GetView{
 
   // Field
   late final DocumentSnapshot _documentSnapshot;
-
+  
   // Constructor
   FournisseurContainer(DocumentSnapshot documentSnapshot,{super.key}){
     _documentSnapshot=documentSnapshot;
@@ -16,6 +16,11 @@ class FournisseurContainer extends GetView{
 
   @override
   Widget build(BuildContext context) {
+    String fournisseurId=_documentSnapshot.id;
+    String nom=(_documentSnapshot.data() as Fournisseur).nom;
+    String email=(_documentSnapshot.data() as Fournisseur).email;
+    String numero=(_documentSnapshot.data() as Fournisseur).numero;
+
     return Center(
       child: Container(
         margin: const EdgeInsets.only(bottom: 10),
@@ -34,8 +39,7 @@ class FournisseurContainer extends GetView{
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    ((_documentSnapshot.data() as Fournisseur).nom).toUpperCase(),
-                   
+                    nom.toUpperCase(), 
                     style:const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w800
@@ -57,7 +61,7 @@ class FournisseurContainer extends GetView{
                             ),
                             const SizedBox(width: 2,),
                             Text(
-                              (_documentSnapshot.data() as Fournisseur).email,
+                              email,
                               style: TextStyle(
                                 color: Theme.of(context).colorScheme.onPrimary,
                                 fontSize: 12,
@@ -76,7 +80,7 @@ class FournisseurContainer extends GetView{
                             ),
                             const SizedBox(width: 2,),
                             Text(
-                              (_documentSnapshot.data() as Fournisseur).numero,
+                              numero,
                                style: TextStyle(
                                 color: Theme.of(context).colorScheme.onPrimary,
                                 fontSize: 12,
@@ -87,12 +91,13 @@ class FournisseurContainer extends GetView{
                       ],
                     ),
                   ),
-          
-                  
                 ],
               ),
               IconButton(
-                onPressed: (){}, 
+                onPressed: (){
+                  Get.toNamed("/productsScreen?fournisseurId=$fournisseurId&nom=$nom&email=$email&numero=$numero");
+
+                }, 
                 icon: const Icon(Icons.arrow_forward_ios_rounded)
               )
             ],

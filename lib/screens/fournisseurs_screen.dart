@@ -89,7 +89,9 @@ class FournisseurSceen extends GetView {
                       final numero = currentFournisseur.numero.trim().toLowerCase();
                       final searchQuery = _searchController.text.trim().toLowerCase();
                       if (!controller.onSearch || nom.contains(searchQuery) || numero.contains(searchQuery) || email.contains(searchQuery)) {
-                        return FournisseurContainer(fournisseurs[index]);
+                        return FournisseurContainer(
+                          fournisseurs[index]
+                        );
                       } else {
                         return const SizedBox.shrink();
                       }
