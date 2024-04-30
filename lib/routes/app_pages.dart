@@ -3,7 +3,6 @@ import 'package:gestion_fournisseur/bindings/main_screen_bindings.dart';
 import 'package:gestion_fournisseur/screens/produits_screen.dart';
 import 'package:gestion_fournisseur/screens/sign_in_screen.dart';
 import 'package:gestion_fournisseur/screens/sign_up_screen.dart';
-import 'package:gestion_fournisseur/screens/test_screen.dart';
 import 'package:get/get.dart';
 
 import '../bindings/products_screen_binding.dart';
