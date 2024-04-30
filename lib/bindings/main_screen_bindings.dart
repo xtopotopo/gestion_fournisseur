@@ -8,6 +8,5 @@ class MainScreenBindings extends Bindings{
   void dependencies() {
     Get.put(FournisseurSearchController());
     Get.put(FournisseurController());
-
   }
 }
