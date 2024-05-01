@@ -12,9 +12,10 @@ import '../widgets/product_container.dart';
 class ProductsScreen extends GetView{
 
   late final TextEditingController _searchController;
-
+  late final DocumentSnapshot _documentSnapshot;
   ProductsScreen({super.key}){
     _searchController =TextEditingController();
+    _documentSnapshot=Get.arguments['documentSnapshot'];
   }
 
   
@@ -24,6 +25,15 @@ class ProductsScreen extends GetView{
     final ProduitDao produitDao=ProduitDao((Get.parameters['fournisseurId'] as String));
 
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){
+
+        },
+        child: Icon(
+          Icons.add,
+          color: Theme.of(context).colorScheme.background,
+        ),
+      ),
       backgroundColor: Theme.of(context).colorScheme.background,
       body:CustomScrollView(
         slivers: 
@@ -107,25 +117,26 @@ class ProductsScreen extends GetView{
                         ),
                       );
                     }
-                    QuerySnapshot querySnapshot=snapshot.data as QuerySnapshot;
-                    List products= querySnapshot.docs;
                     final searchQuery = _searchController.text.trim().toLowerCase();
+                    QuerySnapshot querySnapshot=snapshot.data as QuerySnapshot;
+                    List products= (controller.onSearch)
+                    ?querySnapshot.docs.where((documenSnapshot) => (documenSnapshot.data() as Produit).nom.trim().toLowerCase().contains(searchQuery)).toList()
+                    :querySnapshot.docs;
+                    
                     return SliverGrid(
                       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2, 
                         mainAxisSpacing: 10.0,
                       ),
                       delegate: SliverChildBuilderDelegate( 
-                        childCount: controller.onSearch 
-                          ? products.where((produit) => produit.data().nom.trim().toLowerCase().contains(searchQuery)).length 
-                          : products.length,
+                        childCount: products.length+2,
                         (BuildContext context, int index) {
-                          Produit produit = controller.onSearch 
-                            ? products.where((produit) => produit.data().nom.trim().toLowerCase().contains(searchQuery)).elementAt(index).data()
-                            : products[index].data();
-                          return Padding(
+                          
+                          return(index>=products.length)
+                          ?const SizedBox.shrink()
+                          :Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                            child: ProductContainer(produit: produit),
+                            child: ProductContainer(products[index]),
                           );
                         },
                       ),

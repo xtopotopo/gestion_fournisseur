@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 class Themes{
 
+  final Color secondaryColor=Colors.green;
+
   // Light Mode
   static ThemeData lightMode = ThemeData.light().copyWith(
 
@@ -134,6 +136,12 @@ class Themes{
         ),
 
       )
+    ),
+
+    floatingActionButtonTheme: FloatingActionButtonThemeData(
+      backgroundColor: Colors.green,
+      foregroundColor: Colors.white,
+      splashColor: Colors.grey[100],
     )
 
   );
@@ -271,6 +279,12 @@ class Themes{
         ),
 
       )
+    ),
+
+    floatingActionButtonTheme: FloatingActionButtonThemeData(
+      backgroundColor: Colors.green,
+      foregroundColor: Colors.black,
+      splashColor: Colors.grey[100],
     )
 
   );

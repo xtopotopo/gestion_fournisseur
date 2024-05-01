@@ -59,50 +59,51 @@ class FournisseurSceen extends GetView {
           top: 7
         ),
         child: GetBuilder<FournisseurSearchController>(
-          builder: (controller) {
-            return StreamBuilder(
-              stream: Get.find<FournisseurController>().getFournisseur(), 
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return Center(
-                    child: CircularProgressIndicator(
-                      color: Theme.of(context).colorScheme.secondary,
-                    ),
-                  );
-                } else if (snapshot.hasError) {
-                  return Center(
-                    child: Text('Error: ${snapshot.error}'),
-                  );
-                } else if (snapshot.data == null) {
-                  return  Center(
-                    child: Text('27'.tr),
-                  );
-                } else {
-                  QuerySnapshot querySnapshot = snapshot.data as QuerySnapshot;
-                  List<DocumentSnapshot> fournisseurs = querySnapshot.docs;
-                  return ListView.builder(
-                    itemCount: fournisseurs.length,
-                    itemBuilder: (context, index) {
-                      final currentFournisseur = fournisseurs[index].data() as Fournisseur;
-                      final nom = currentFournisseur.nom.trim().toLowerCase();
-                      final email = currentFournisseur.email.trim().toLowerCase();
-                      final numero = currentFournisseur.numero.trim().toLowerCase();
-                      final searchQuery = _searchController.text.trim().toLowerCase();
-                      if (!controller.onSearch || nom.contains(searchQuery) || numero.contains(searchQuery) || email.contains(searchQuery)) {
-                        return FournisseurContainer(
-                          fournisseurs[index]
-                        );
-                      } else {
-                        return const SizedBox.shrink();
-                      }
-                    },
-                  );
-    
-                }
-              },
-            );
-          }
-        ),
+        builder: (controller) {
+          return StreamBuilder(
+            stream: Get.find<FournisseurController>().getFournisseur(), 
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return Center(
+                  child: CircularProgressIndicator(
+                    color: Theme.of(context).colorScheme.secondary,
+                  ),
+                );
+              } else if (snapshot.hasError) {
+                return Center(
+                  child: Text('Error: ${snapshot.error}'),
+                );
+              } else if (snapshot.data == null) {
+                return  Center(
+                  child: Text('27'.tr),
+                );
+              } else {
+                QuerySnapshot querySnapshot = snapshot.data as QuerySnapshot;
+                List<DocumentSnapshot> fournisseurs = (controller.onSearch)
+                  ?querySnapshot.docs.where((documentSnapshot) =>
+                    (documentSnapshot.data() as Fournisseur).nom.toLowerCase().contains(_searchController.text) ||
+                    (documentSnapshot.data() as Fournisseur).numero.toLowerCase().contains(_searchController.text)
+                  ).toList()
+                  :querySnapshot.docs.toList();
+                return ListView.builder(
+                  itemCount: fournisseurs.length,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: EdgeInsets.only(
+                        bottom: (index == fournisseurs.length - 1) ? 100.0 : 0.0,
+                      ),
+                      child: FournisseurContainer(
+                        fournisseurs[index],
+                      ),
+                    );
+                  },
+                );
+              }
+            },
+          );
+        },
+      ),
+
       ),
     );
     

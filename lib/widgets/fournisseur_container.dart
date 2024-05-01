@@ -95,7 +95,9 @@ class FournisseurContainer extends GetView{
               ),
               IconButton(
                 onPressed: (){
-                  Get.toNamed("/productsScreen?fournisseurId=$fournisseurId&nom=$nom&email=$email&numero=$numero");
+                  Get.toNamed("/productsScreen?fournisseurId=$fournisseurId&nom=$nom&email=$email&numero=$numero",arguments:{
+                      'documentSnapshot':_documentSnapshot
+                    } );
 
                 }, 
                 icon: const Icon(Icons.arrow_forward_ios_rounded)

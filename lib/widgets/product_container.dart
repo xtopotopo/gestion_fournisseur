@@ -1,17 +1,19 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../models/produit.dart';
 
 class ProductContainer extends StatelessWidget {
-  const ProductContainer({
-    super.key,
-    required this.produit,
-  });
+  const ProductContainer(this._ducumentSnapshot,{super.key,});
 
-  final Produit produit;
+  final DocumentSnapshot<Produit> _ducumentSnapshot;
+  
 
   @override
   Widget build(BuildContext context) {
+    final String nom=_ducumentSnapshot.data()!.nom;
+    final String description=_ducumentSnapshot.data()!.description;
     return Container(
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
@@ -22,9 +24,9 @@ class ProductContainer extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            (produit.nom.length>20)
-            ?"${produit.nom.substring(0,17)}..."
-            :produit.nom,
+            (nom.length>20)
+            ?"${nom.substring(0,17)}..."
+            :nom,
             style: TextStyle(
               fontWeight: FontWeight.w600,
               color: Theme.of(context).colorScheme.onBackground,
@@ -34,9 +36,9 @@ class ProductContainer extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
-              (produit.description.length>50)
-              ?"${produit.description.substring(0,47)}..."
-              :produit.description,
+              (description.length>50)
+              ?"${description.substring(0,47)}..."
+              :description,
               style:  TextStyle(
                 fontWeight: FontWeight.w400,
                 color: Theme.of(context).colorScheme.onPrimary,
@@ -49,6 +51,15 @@ class ProductContainer extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               GestureDetector(
+                onTap: (){
+                  Get.toNamed(
+                    "/productDetailsScreen",
+                    arguments: {
+                      'documentSnapshot':_ducumentSnapshot
+                    }
+                  );
+                  
+                },
                 child: Row(
                   children: [
                     Text(

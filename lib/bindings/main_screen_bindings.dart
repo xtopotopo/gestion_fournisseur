@@ -6,7 +6,7 @@ class MainScreenBindings extends Bindings{
 
   @override
   void dependencies() {
-    Get.put(FournisseurSearchController());
+    Get.put(FournisseurSearchController(),permanent: true);
     Get.put(FournisseurController());
   }
 }

@@ -60,8 +60,8 @@ class CustomTextField extends GetView {
     _controller=controller;
   }
 
-  CustomTextField.search({super.key,required TextEditingController controller}){
-    _type=TextFieldType.search;
+  CustomTextField.date({super.key,required TextEditingController controller}){
+    _type=TextFieldType.date;
     _controller=controller;
   }
   
@@ -222,7 +222,7 @@ class CustomTextField extends GetView {
             );
           }
         );
-      case TextFieldType.search:
+      case TextFieldType.date:
         return TextFormField(
               validator: (value) {
                 if (value == null || value.isEmpty) {
@@ -230,20 +230,15 @@ class CustomTextField extends GetView {
                 }
                 return null;
               },
+              onTap: () {
+                
+              },
               controller: _controller,
               obscureText: false,
               decoration: InputDecoration(
                 filled: true,
-                prefixIcon: const Icon(Icons.search_rounded,size: 10,),
-                suffix: IconButton(
-                  onPressed: (){
-                    controller.toogle();
-                  }, 
-                  icon:Icon(
-                    Icons.cancel,
-                    size: 20,
-                    )
-                ),
+                prefixIcon: const Icon(Icons.date_range_rounded,size: 10,),
+                
                 hintText: 'Search'
               ),
               keyboardType: TextInputType.multiline,
@@ -263,5 +258,5 @@ enum TextFieldType {
   confirmationPassword,
   names,
   id,
-  search
+  date
 }

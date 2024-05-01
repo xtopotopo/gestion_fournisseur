@@ -1,14 +1,15 @@
+
+
 import 'package:flutter/material.dart';
-import 'package:gestion_fournisseur/controllers/fournisseur_controller.dart';
-import 'package:gestion_fournisseur/widgets/custom_text_field.dart';
 import 'package:get/get.dart';
 
-final _addFournisseurFormKey = GlobalKey<FormState>();
+import '../../widgets/custom_text_field.dart';
 
-class AddFournisseurAlertDialog {
+final _addProduitFormKey = GlobalKey<FormState>();
+
+class AddProduitAlertDialog {
 
   static void show(BuildContext context){
-
     final TextEditingController emailController=TextEditingController();
     final TextEditingController nomController=TextEditingController();
     final TextEditingController numeroController=TextEditingController();
@@ -20,7 +21,7 @@ class AddFournisseurAlertDialog {
         return Scaffold(
           backgroundColor: Colors.transparent,
           body: Form(
-            key: _addFournisseurFormKey,
+            key: _addProduitFormKey,
             child: Center(
               child: AnimatedContainer(
                 duration: const Duration(seconds: 1),
@@ -105,13 +106,8 @@ class AddFournisseurAlertDialog {
                             height: 40,
                             child: ElevatedButton(
                               onPressed: ()async {
-                                if(_addFournisseurFormKey.currentState!.validate()){
-                                    await Get.find<FournisseurController>().addFournisseur(
-                                    nomController: nomController, 
-                                    emailController: emailController, 
-                                    numeroController: numeroController, 
-                                    context: context
-                                  );
+                                if(_addProduitFormKey.currentState!.validate()){
+                                   
                                   Navigator.pop(context);
                                 }
                                 

@@ -1,5 +1,6 @@
 import 'package:gestion_fournisseur/bindings/authentification_binding.dart';
 import 'package:gestion_fournisseur/bindings/main_screen_bindings.dart';
+import 'package:gestion_fournisseur/screens/product_details_screen.dart';
 import 'package:gestion_fournisseur/screens/produits_screen.dart';
 import 'package:gestion_fournisseur/screens/sign_in_screen.dart';
 import 'package:gestion_fournisseur/screens/sign_up_screen.dart';
@@ -45,6 +46,12 @@ class AppPages {
       name: "/productsScreen", 
       page: () => ProductsScreen(),
       binding: ProductsScreenBindings(),
+      transition: Transition.rightToLeftWithFade,
+      transitionDuration: const Duration(milliseconds: 400),
+    ),
+    GetPage(
+      name: "/productDetailsScreen", 
+      page: () => ProductDetailsScreen(),
       transition: Transition.rightToLeftWithFade,
       transitionDuration: const Duration(milliseconds: 400),
     )
