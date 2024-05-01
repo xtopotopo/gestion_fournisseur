@@ -11,7 +11,7 @@ class ProductDetailsScreen extends GetView{
 
   @override
   Widget build(BuildContext context) {
-    final Produit produit=((Get.arguments['documentSnapshot'] as DocumentSnapshot).data() as Produit);
+    final Produit produit=((Get.arguments['productDocumentSnapshot'] as DocumentSnapshot).data() as Produit);
     return Scaffold(
       appBar: AppBar(),
       backgroundColor: Theme.of(context).colorScheme.background,

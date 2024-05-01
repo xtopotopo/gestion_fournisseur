@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gestion_fournisseur/controllers/product_search_controller.dart';
+import 'package:gestion_fournisseur/models/fournisseur.dart';
 import 'package:gestion_fournisseur/models/produit.dart';
 import 'package:get/get.dart';
 
@@ -12,17 +13,18 @@ import '../widgets/product_container.dart';
 class ProductsScreen extends GetView{
 
   late final TextEditingController _searchController;
-  late final DocumentSnapshot _documentSnapshot;
+  late final DocumentSnapshot<Fournisseur> _documentSnapshot;
   ProductsScreen({super.key}){
     _searchController =TextEditingController();
-    _documentSnapshot=Get.arguments['documentSnapshot'];
+    _documentSnapshot=Get.arguments['fournisseurDocumentSnapshot'] as DocumentSnapshot<Fournisseur>;
   }
 
   
 
   @override
   Widget build(BuildContext context) {
-    final ProduitDao produitDao=ProduitDao((Get.parameters['fournisseurId'] as String));
+    final ProduitDao produitDao=ProduitDao(_documentSnapshot.id);
+    final Fournisseur fournisseur =_documentSnapshot.data() as Fournisseur;
 
     return Scaffold(
       floatingActionButton: FloatingActionButton(
@@ -69,7 +71,7 @@ class ProductsScreen extends GetView{
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      Get.parameters['nom']as String,
+                      fournisseur.nom,
                       style: const TextStyle(
                         fontSize: 26.0,
                         fontWeight: FontWeight.w900
@@ -136,7 +138,7 @@ class ProductsScreen extends GetView{
                           ?const SizedBox.shrink()
                           :Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                            child: ProductContainer(products[index]),
+                            child: ProductContainer(products[index],),
                           );
                         },
                       ),

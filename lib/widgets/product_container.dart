@@ -55,7 +55,7 @@ class ProductContainer extends StatelessWidget {
                   Get.toNamed(
                     "/productDetailsScreen",
                     arguments: {
-                      'documentSnapshot':_ducumentSnapshot
+                      'productDocumentSnapshot':_ducumentSnapshot
                     }
                   );
                   

@@ -16,7 +16,6 @@ class FournisseurContainer extends GetView{
 
   @override
   Widget build(BuildContext context) {
-    String fournisseurId=_documentSnapshot.id;
     String nom=(_documentSnapshot.data() as Fournisseur).nom;
     String email=(_documentSnapshot.data() as Fournisseur).email;
     String numero=(_documentSnapshot.data() as Fournisseur).numero;
@@ -95,9 +94,10 @@ class FournisseurContainer extends GetView{
               ),
               IconButton(
                 onPressed: (){
-                  Get.toNamed("/productsScreen?fournisseurId=$fournisseurId&nom=$nom&email=$email&numero=$numero",arguments:{
-                      'documentSnapshot':_documentSnapshot
-                    } );
+                  Get.toNamed(
+                    "/productsScreen",arguments:
+                    {'fournisseurDocumentSnapshot':_documentSnapshot}
+                  );
 
                 }, 
                 icon: const Icon(Icons.arrow_forward_ios_rounded)
