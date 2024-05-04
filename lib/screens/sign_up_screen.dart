@@ -46,10 +46,12 @@ class SignUpScreen extends GetView{
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Expanded(
-                    child: Icon(
-                      Icons.change_circle_rounded,
-                      size: 200,
-                      color: Theme.of(context).colorScheme.secondary,
+                    child: Center(
+                      child: Icon(
+                        Icons.change_circle_rounded,
+                        size: 200,
+                        color: Theme.of(context).colorScheme.secondary,
+                      ),
                     ),
                   ),
                 ],

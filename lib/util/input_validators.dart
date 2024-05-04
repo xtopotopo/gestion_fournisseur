@@ -47,20 +47,20 @@ class  InputValidation {
     
   }
 
-  static String? isNumberValid(String cin) {
+  static String? isNumberValid(String number) {
     
-    final RegExp regex = RegExp(r'^[0-9]*$',);
+    final RegExp regex = RegExp(r'^-?\d*(\.\d+)?$',);
   
-    if(!regex.hasMatch(cin)) return '12'.tr;
+    if(!regex.hasMatch(number)) return '12'.tr;
     return null;
     
   }
 
-  static String? isTextValid(String cin) {
+  static String? isTextValid(String text) {
     
     final RegExp regex = RegExp(r'^[azAZ ]$',);
   
-    if(!regex.hasMatch(cin)) return '11'.tr;
+    if(!regex.hasMatch(text)) return '11'.tr;
     return null;
     
   }

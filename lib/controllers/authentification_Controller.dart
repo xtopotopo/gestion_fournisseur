@@ -8,6 +8,9 @@ import 'package:gestion_fournisseur/dao/utilisateur_dao.dart';
 import 'package:gestion_fournisseur/models/utilisateur.dart';
 import 'package:get/get.dart';
 
+import '../screens/screen_widgets/circular_progress_indicror.dart';
+import '../screens/screen_widgets/custom_snackbar.dart';
+
 class AuthentificationController extends GetxController{
 
   // Fields
@@ -34,17 +37,7 @@ class AuthentificationController extends GetxController{
     }) async{
     try{ 
 
-      showDialog(
-        context: context, 
-        barrierDismissible: false,
-        builder: (constext){
-          return Center(
-                child: CircularProgressIndicator(
-                  color: Theme.of(context).colorScheme.secondary,
-                ),
-              );
-        }
-      );
+      CircularProgreesIndicator.show(context);
       
       if(password.text.trim()!=confirmationPassword.text.trim()) throw Exception("confirmation-password-invalid");
 
@@ -57,10 +50,6 @@ class AuthentificationController extends GetxController{
         password.text.trim()
       );
       
-      
-      //bool exists=await _utilisateurDao.emailExists(utilisateur.email);
-      
-      //if(exists) throw Exception('email-already-in-use');
       await _authentificationDao.signUp(
         email: utilisateur.email, 
         password: utilisateur.mdp
@@ -70,11 +59,23 @@ class AuthentificationController extends GetxController{
       
       
       Navigator.pop(context);
-
-    }catch(e){
+      CustomSnackbar.success(message:'55'.tr, context: context);
+    }on FirebaseAuthException catch(e){      
       Navigator.pop(context);
+      if(e.code=="email-already-in-use"){
+        CustomSnackbar.failure(message:'53'.tr, context: context);
+      }else{
+        CustomSnackbar.failure(message:'33'.tr, context: context);
+      }
 
       printError(info:e.toString());
+    }on Exception catch(e){
+      Navigator.pop(context);
+      if(e.toString()=="Exception: confirmation-password-invalid"){
+        CustomSnackbar.failure(message:'56'.tr, context: context);
+      }else {
+        CustomSnackbar.failure(message:'33'.tr, context: context);
+      }
     }
   }
 
@@ -82,20 +83,11 @@ class AuthentificationController extends GetxController{
   Future<void> signIn({required BuildContext context,required TextEditingController email,required TextEditingController password}) async{
     try{
 
+      CircularProgreesIndicator.show(context);
+
       String emailText = email.text.trim();
       String passwordText= password.text.trim();
 
-      showDialog(
-        context: context, 
-        barrierDismissible: false,
-        builder: (constext){
-          return Center(
-                child: CircularProgressIndicator(
-                  color: Theme.of(context).colorScheme.secondary,
-                ),
-              );
-        }
-      );
       await _authentificationDao.signIn(
         email: emailText, 
         password: passwordText
@@ -106,15 +98,19 @@ class AuthentificationController extends GetxController{
 
 
       Navigator.pop(context);
-
-
       
-      Get.offAllNamed("fournisseurScreen");
+      Get.offAllNamed("/fournisseurScreen");
     }on FirebaseAuthException catch(e){
       Navigator.pop(context);
+      if(e.code=='invalid-credential'){
+        CustomSnackbar.failure(message:'47'.tr, context: context);
+      }else {
+        CustomSnackbar.failure(message:'33'.tr, context: context);
+      }
       printError(info: e.code);
     }on Exception catch(e){
       Navigator.pop(context);
+      CustomSnackbar.failure(message:'33'.tr, context: context);
       printError(info: e.toString());
     }
   }
@@ -122,36 +118,30 @@ class AuthentificationController extends GetxController{
   // Reset Password method
   Future<void> resetPassword({required TextEditingController emailController,required BuildContext context}) async{
     try{
-      showDialog(
-        context: context, 
-        barrierDismissible: false,
-        builder: (constext){
-          return Center(
-            child: CircularProgressIndicator(
-              color: Theme.of(context).colorScheme.secondary,
-            ),
-          );
-        }
-      );
+      CircularProgreesIndicator.show(context);
 
       String email=emailController.text.trim();
-
       
       bool exists=await _utilisateurDao.emailExists(email);
-      
 
       if(!exists) throw Exception('account-not-found');
       
       await _authentificationDao.resetPassword(email);
 
       Navigator.pop(context);
-      //Get.back()
+      CustomSnackbar.success(message:'57'.tr, context: context);
       
     }on FirebaseAuthException catch(e){
       Navigator.pop(context);
+      CustomSnackbar.failure(message:'33'.tr, context: context);
       printError(info:e.code);
     }on Exception catch(e){
       Navigator.pop(context);
+      if(e.toString()=='Exception: account-not-found'){
+        CustomSnackbar.failure(message:'54'.tr, context: context);
+      }else {
+        CustomSnackbar.failure(message:'33'.tr, context: context);
+      }
       printError(info: e.toString());
     }
   }

@@ -2,21 +2,35 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:gestion_fournisseur/models/fournisseur.dart';
 import 'package:gestion_fournisseur/models/produit.dart';
 import 'package:get/get.dart';
 
+import 'screen_widgets/products_alert_dialog.dart';
+
 class ProductDetailsScreen extends GetView{
-  late final DocumentSnapshot<Produit> _documentSnapshot=Get.arguments['documentSnapshot'] as DocumentSnapshot<Produit>;
-  ProductDetailsScreen({super.key});
+  late final DocumentSnapshot<Produit> _produitDocumentSnapshot;
+  late final DocumentSnapshot<Fournisseur> _fournisseurDocumentSnapshot;
+  ProductDetailsScreen({super.key}){
+    _produitDocumentSnapshot=Get.arguments['productDocumentSnapshot'] as DocumentSnapshot<Produit>;
+    _fournisseurDocumentSnapshot=Get.arguments['fournisseurDocumentSnapshot'] as DocumentSnapshot<Fournisseur>;
+  }
 
   @override
   Widget build(BuildContext context) {
-    final Produit produit=((Get.arguments['productDocumentSnapshot'] as DocumentSnapshot).data() as Produit);
+    final Produit produit=(_produitDocumentSnapshot.data() as Produit);
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        
+      ),
       backgroundColor: Theme.of(context).colorScheme.background,
       floatingActionButton: FloatingActionButton(
-        onPressed: (){},
+        onPressed: (){
+          ProduitAlertDialog.show(fournisseurId: _fournisseurDocumentSnapshot.id, context: context,type: Type.modify,productDocument: _produitDocumentSnapshot);
+         
+          
+         
+        },
         child: Icon(
           Icons.edit,
           color: Theme.of(context).colorScheme.background,
@@ -75,7 +89,7 @@ class ProductDetailsScreen extends GetView{
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Description :'.tr,
+                              '35'.tr,
                               style: TextStyle(
                                 color: Theme.of(context).colorScheme.onBackground,
                                 fontWeight: FontWeight.w800,
@@ -103,7 +117,7 @@ class ProductDetailsScreen extends GetView{
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      'Quantite :'.tr,
+                                      '36'.tr,
                                       style: TextStyle(
                                         color: Theme.of(context).colorScheme.onBackground,
                                         fontWeight: FontWeight.w800,
@@ -128,7 +142,7 @@ class ProductDetailsScreen extends GetView{
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      'Prix Unite :'.tr,
+                                      '37'.tr,
                                       style: TextStyle(
                                         color: Theme.of(context).colorScheme.onBackground,
                                         fontWeight: FontWeight.w800,
@@ -138,7 +152,7 @@ class ProductDetailsScreen extends GetView{
                                     Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Text(
-                                        '${produit.prixUnite.toString()} dh',
+                                        '${produit.prixUnite.toString()} ${'38'.tr}',
                                         style:const  TextStyle(
                                           fontWeight: FontWeight.w300,
                                           fontSize: 15,
@@ -153,7 +167,7 @@ class ProductDetailsScreen extends GetView{
                             ),
                             const SizedBox(height: 7,),
                             Text(
-                              "Date d'achat :".tr,
+                              '39'.tr,
                               style:TextStyle(
                                 color: Theme.of(context).colorScheme.onBackground,
                                 fontWeight: FontWeight.w800,
@@ -163,7 +177,7 @@ class ProductDetailsScreen extends GetView{
                             Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Text(
-                                '${produit.date.year}-${produit.date.month}-${produit.date.day}',
+                                '${(produit.date).toDate().year}-${(produit.date).toDate().month}-${(produit.date.toDate()).day}',
                                 style:const  TextStyle(
                                   fontWeight: FontWeight.w300,
                                   fontSize: 15,
@@ -192,7 +206,7 @@ class ProductDetailsScreen extends GetView{
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text(
-                  'Prix Totale :'.tr,
+                  '${'40'.tr} :',
                   style: TextStyle(
                     color: Theme.of(context).colorScheme.onBackground,
                     fontWeight: FontWeight.w900,
@@ -201,9 +215,10 @@ class ProductDetailsScreen extends GetView{
                 ),
                 const SizedBox(width: 5,),
                 Text(
-                  '${(produit.prixUnite*produit.qunatite).toString()} dh',
+                  '${(produit.prixUnite*produit.qunatite).toString()} ${'38'.tr}',
                   style:const  TextStyle(
-                    fontWeight: FontWeight.w400,
+                    color: Colors.red,
+                    fontWeight: FontWeight.w500,
                     fontSize: 15,
                   ),
                 ),

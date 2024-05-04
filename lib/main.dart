@@ -6,6 +6,7 @@ import 'package:gestion_fournisseur/controllers/translations_controller.dart';
 import 'package:gestion_fournisseur/locale/translations.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'controllers/produit_toggle_button_controllse.dart';
 import 'firebase_options.dart';
 import 'locale/themes.dart';
 import 'routes/app_pages.dart';
@@ -27,6 +28,7 @@ class MyApp extends StatelessWidget {
     Get.put(SessionVariableController());
     Get.put(DarkLightModeController());
     Get.put(TranslationsController());
+    Get.put(ProduitToggleButtonController());
 
 
     return GetMaterialApp(

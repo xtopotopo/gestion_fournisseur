@@ -16,6 +16,7 @@ class FournisseurContainer extends GetView{
 
   @override
   Widget build(BuildContext context) {
+    
     String nom=(_documentSnapshot.data() as Fournisseur).nom;
     String email=(_documentSnapshot.data() as Fournisseur).email;
     String numero=(_documentSnapshot.data() as Fournisseur).numero;

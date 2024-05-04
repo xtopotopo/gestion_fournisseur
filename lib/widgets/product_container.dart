@@ -55,7 +55,8 @@ class ProductContainer extends StatelessWidget {
                   Get.toNamed(
                     "/productDetailsScreen",
                     arguments: {
-                      'productDocumentSnapshot':_ducumentSnapshot
+                      'productDocumentSnapshot':_ducumentSnapshot,
+                      'fournisseurDocumentSnapshot':Get.arguments['fournisseurDocumentSnapshot']
                     }
                   );
                   
@@ -63,7 +64,7 @@ class ProductContainer extends StatelessWidget {
                 child: Row(
                   children: [
                     Text(
-                      "Details",
+                      '34'.tr,
                       style: TextStyle(
                         color: Theme.of(context).colorScheme.onPrimaryContainer
                       ),

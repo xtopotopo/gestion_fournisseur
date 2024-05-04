@@ -16,6 +16,7 @@ class CustomTextField extends GetView {
   late final  String _label;
   late  TextEditingController? _controller;
 
+
   //Constructors
   CustomTextField.email({super.key,required TextEditingController controller}){
     _type=TextFieldType.email;
@@ -42,22 +43,23 @@ class CustomTextField extends GetView {
     _controller=controller;
   }
 
-  CustomTextField.number({super.key,required String label,required TextEditingController controller}){
+  CustomTextField.number({super.key,required String label,required TextEditingController controller,}){
     _type=TextFieldType.number;
     _label=label;
     _controller=controller;
   }
 
-  CustomTextField.text({super.key,required String label,required TextEditingController controller}){
+  CustomTextField.text({super.key,required String label,required TextEditingController controller,}){
     _type=TextFieldType.text;
     _label=label;
     _controller=controller;
   }
 
-  CustomTextField.names({super.key,required String label,required TextEditingController controller}){
+  CustomTextField.names({super.key,required String label,required TextEditingController controller,}){
     _type=TextFieldType.names;
     _label=label;
     _controller=controller;
+
   }
 
   CustomTextField.date({super.key,required TextEditingController controller}){
@@ -88,7 +90,7 @@ class CustomTextField extends GetView {
         );
         
       case TextFieldType.text:
-
+        //_controller!.text=_initialValue??'';
         return  TextFormField(
           validator: (value) {
             if (value == null || value.isEmpty) {
@@ -98,7 +100,10 @@ class CustomTextField extends GetView {
           },
           controller: _controller,
           obscureText: false,
+          minLines: 2,
+          maxLines: 3,
           decoration: InputDecoration(
+            
             prefixIcon:const Icon(Icons.text_format_rounded),
             labelText: _label
           ),
@@ -106,7 +111,6 @@ class CustomTextField extends GetView {
         );
 
       case TextFieldType.number:
-
         return TextFormField(
           validator: (value) {
             if (value == null || value.isEmpty) {
@@ -125,19 +129,21 @@ class CustomTextField extends GetView {
       
       
       case TextFieldType.names:
-
         return TextFormField(
+          
           validator: (value) {
             if (value == null || value.isEmpty) {
               return '13'.tr;
             }
             return InputValidation.isNameValid(value);
           },
+          
           controller: _controller,
           obscureText: false,
           decoration: InputDecoration(
             prefixIcon:const Icon(Icons.account_box_rounded),
             labelText: _label
+            
           ),
           keyboardType: TextInputType.name,
         );
@@ -230,16 +236,37 @@ class CustomTextField extends GetView {
                 }
                 return null;
               },
-              onTap: () {
-                
+              onTap: () async{
+                DateTime? pickeddate = await showDatePicker(
+                  context: context,
+                  firstDate: DateTime(DateTime.now().year - 1),
+                  lastDate: DateTime(DateTime.now().year + 50),
+                  initialEntryMode: DatePickerEntryMode.calendarOnly,
+                );
+                if (pickeddate != null) {
+                  String month = '';
+                  String day = '';
+                  if(pickeddate.month<10){
+                    month = '0${pickeddate.month}';
+                  }else{ 
+                    month = '${pickeddate.month}';
+                  }
+                  if(pickeddate.day<10){
+                    day = '0${pickeddate.day}';
+                  }else{
+                    day = '${pickeddate.day}';
+                  }
+                  _controller!.text ="${pickeddate.year}-$month-$day";
+                }
               },
+              readOnly: true,
               controller: _controller,
               obscureText: false,
-              decoration: InputDecoration(
+              decoration:const InputDecoration(
                 filled: true,
-                prefixIcon: const Icon(Icons.date_range_rounded,size: 10,),
+                prefixIcon: Icon(Icons.date_range_rounded),
                 
-                hintText: 'Search'
+                hintText: 'Date'
               ),
               keyboardType: TextInputType.multiline,
             );

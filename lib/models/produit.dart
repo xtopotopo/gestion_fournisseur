@@ -8,7 +8,7 @@ class Produit{
   late double _prixUnite;
   late String _unite;
   late double _quantite;
-  late DateTime _date;
+  late Timestamp _date;
 
   //Constructor
   Produit(
@@ -26,14 +26,14 @@ class Produit{
   double get prixUnite =>_prixUnite;
   String get unite =>_unite;
   double get qunatite =>_quantite;
-  DateTime get date =>_date;
+  Timestamp get date =>_date;
 
   set nom(String value) =>_nom=value;
   set description(String value) =>_description=value;
   set prixUnite(double value) =>_prixUnite=value;
   set unite(String value) =>_unite=value;
   set qunatite(double value) =>_quantite=value;
-  set date(DateTime value) =>_date=value;
+  set date(Timestamp value) =>_date=value;
 
   //From-to Json parse methods
   factory Produit.fromJson(Map<String,dynamic> json)=>Produit
@@ -43,7 +43,7 @@ class Produit{
       double.parse(json['prixUnite'].toString()) , 
       json['unite'] as String, 
       double.parse(json['quantite'].toString()), 
-      (json['date'] as Timestamp).toDate() 
+      json['date'] as Timestamp
     );
 
     Map<String,dynamic> toJson()=>{
@@ -63,7 +63,7 @@ class Produit{
         double? prixUnite,
         String? unite,
         double? quantite,
-        DateTime? date,
+        Timestamp? date,
       }
       )=>Produit(
         nom??_nom,

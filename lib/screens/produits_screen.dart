@@ -4,32 +4,34 @@ import 'package:flutter/material.dart';
 import 'package:gestion_fournisseur/controllers/product_search_controller.dart';
 import 'package:gestion_fournisseur/models/fournisseur.dart';
 import 'package:gestion_fournisseur/models/produit.dart';
+import 'package:gestion_fournisseur/screens/screen_widgets/products_alert_dialog.dart';
 import 'package:get/get.dart';
 
 import '../dao/produit_dao.dart';
 import '../widgets/product_container.dart';
+import '../widgets/product_toggle_button.dart';
 
 
 class ProductsScreen extends GetView{
 
   late final TextEditingController _searchController;
-  late final DocumentSnapshot<Fournisseur> _documentSnapshot;
+  late final DocumentSnapshot<Fournisseur> _fournisseurDocumentSnapshot;
   ProductsScreen({super.key}){
     _searchController =TextEditingController();
-    _documentSnapshot=Get.arguments['fournisseurDocumentSnapshot'] as DocumentSnapshot<Fournisseur>;
+    _fournisseurDocumentSnapshot=Get.arguments['fournisseurDocumentSnapshot'] as DocumentSnapshot<Fournisseur>;
   }
 
   
 
   @override
   Widget build(BuildContext context) {
-    final ProduitDao produitDao=ProduitDao(_documentSnapshot.id);
-    final Fournisseur fournisseur =_documentSnapshot.data() as Fournisseur;
+    final ProduitDao produitDao=ProduitDao(_fournisseurDocumentSnapshot.id);
+    final Fournisseur fournisseur =_fournisseurDocumentSnapshot.data() as Fournisseur;
 
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: (){
-
+          ProduitAlertDialog.show(fournisseurId: _fournisseurDocumentSnapshot.id, context: context,type: Type.add);
         },
         child: Icon(
           Icons.add,
@@ -60,7 +62,7 @@ class ProductsScreen extends GetView{
             floating: true,
             iconTheme: IconThemeData(color: Theme.of(context).colorScheme.onBackground),
             backgroundColor: Theme.of(context).colorScheme.secondary,
-            expandedHeight: MediaQuery.of(context).size.height*0.12,
+            expandedHeight: MediaQuery.of(context).size.height*0.16,
             foregroundColor: Theme.of(context).colorScheme.onBackground,
             pinned: true,
             flexibleSpace: FlexibleSpaceBar(
@@ -70,11 +72,20 @@ class ProductsScreen extends GetView{
                   mainAxisAlignment: MainAxisAlignment.end,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      fournisseur.nom,
-                      style: const TextStyle(
-                        fontSize: 26.0,
-                        fontWeight: FontWeight.w900
+                    Padding(
+                      padding: const EdgeInsets.only(right:8.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            fournisseur.nom,
+                            style: const TextStyle(
+                              fontSize: 26.0,
+                              fontWeight: FontWeight.w900
+                            ),
+                          ),
+                          CustomProductToggleButton(),
+                        ],
                       ),
                     ),
                     const SizedBox(height: 7,)
