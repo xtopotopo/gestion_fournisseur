@@ -27,6 +27,7 @@ class TranslationsController extends GetxController{
     _storage.write('language', language);
     Get.updateLocale(appLocale);
     update();
+    
 
   }
 

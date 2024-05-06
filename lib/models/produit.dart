@@ -64,8 +64,7 @@ class Produit{
         String? unite,
         double? quantite,
         Timestamp? date,
-      }
-      )=>Produit(
+      })=>Produit(
         nom??_nom,
         description??_description,
         prixUnite??_prixUnite,

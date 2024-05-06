@@ -21,9 +21,7 @@ class FournisseurSceen extends GetView {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
-
       floatingActionButton: FloatingActionButton(
         onPressed: (){
           AddFournisseurAlertDialog.show(context);
@@ -101,12 +99,7 @@ class FournisseurSceen extends GetView {
           );
         },
       ),
-
       ),
     );
-    
-  }
-
-  
+  } 
 }
-

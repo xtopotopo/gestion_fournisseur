@@ -145,4 +145,10 @@ class AuthentificationController extends GetxController{
       printError(info: e.toString());
     }
   }
+
+  Future<void> signOut() async{
+    await _authentificationDao.signOut();
+    Get.find<SessionVariableController>().clear();
+    Get.offAllNamed("/");
+  }
 }

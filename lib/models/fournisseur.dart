@@ -49,8 +49,7 @@ class Fournisseur{
       String? nom,
       String? email,
       String? numero
-    }
-  )=>Fournisseur(
+    })=>Fournisseur(
       nom??_nom, 
       email??_email, 
       numero??_numero

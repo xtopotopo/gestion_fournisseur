@@ -70,6 +70,7 @@ class AppTranslations implements Translations{
       '63': 'الإحصائيات',
       '64': 'مورد',
       '65': 'الصفحة الرئيسية',
+      '66':'تسجيل الخروج',
     },
 
 
@@ -139,6 +140,7 @@ class AppTranslations implements Translations{
       '63': 'Statistics',
       '64':'Suppliers',
       '65':'Home',
+      '66':'Logout',
     },
 
 
@@ -208,7 +210,7 @@ class AppTranslations implements Translations{
       '63':'statistiques',
       '64':'Fournisseur',
       '65':'Acceuil',
-      
+      '66':'Déconnexion',
     }
   };
 }

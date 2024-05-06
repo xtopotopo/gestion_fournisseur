@@ -7,9 +7,12 @@ import 'package:get/get.dart';
 import '../controllers/bottom_bar_controller.dart';
 
 class MainScreen extends GetView{
+
+  // Field
   late final PageController _pageController;
 
-   MainScreen({super.key}){
+  // Constructor
+  MainScreen({super.key}){
     _pageController=PageController(initialPage: 0);
    }
 

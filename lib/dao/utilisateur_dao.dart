@@ -37,7 +37,6 @@ class UtilisateurDao{
     QuerySnapshot querySnapshot = await _utilisateurs
     .where("email", isEqualTo: email)
     .get();
-  
     return querySnapshot.docs.first;  
   }
 
@@ -46,12 +45,9 @@ class UtilisateurDao{
     QuerySnapshot querySnapshot = await _utilisateurs
     .where("email", isEqualTo: email)
     .get();
-    
-
     if(querySnapshot.docs.isNotEmpty){
       return true;
     }
-
     return false;
   }
 

@@ -7,6 +7,7 @@ class DarkLightModeController extends GetxController{
   // Fields
   late GetStorage _storage;
   late Mode _mode;
+  late Color secondaryColor=Colors.blue;
 
   // Constructor
   DarkLightModeController(){
@@ -32,6 +33,7 @@ class DarkLightModeController extends GetxController{
       _mode=Mode.dark;
     }
     update();
+    
   }
 
   //Getter

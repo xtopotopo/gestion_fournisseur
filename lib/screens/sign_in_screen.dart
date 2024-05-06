@@ -10,15 +10,16 @@ final _loginFormKey = GlobalKey<FormState>();
 
 class SignInScreen extends GetView{
 
+  // Fields
   late TextEditingController _emailController;
   late TextEditingController _passwordController;
 
+  // Constructor
   SignInScreen({super.key,String? name}){
     _emailController=TextEditingController();
     _passwordController=TextEditingController();
     
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -75,7 +76,6 @@ class SignInScreen extends GetView{
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: 
                     [
-                      
                       GestureDetector(
                         onTap: (){
                           Get.toNamed("resetPasswordScreen");
@@ -99,7 +99,6 @@ class SignInScreen extends GetView{
                           password: _passwordController, 
                           context: context
                         );
-                        
                       }
                     }, 
                     child: Text('4'.tr)
@@ -129,7 +128,6 @@ class SignInScreen extends GetView{
                       )
                     ],
                   )
-              
                 ],
               ),
             )
@@ -138,6 +136,5 @@ class SignInScreen extends GetView{
       ),
     );
   }
-
 }
 

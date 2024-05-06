@@ -32,4 +32,9 @@ class AuthentificationDao{
       email: email,
     );
   }
+
+  // SignOut method
+  Future<void> signOut() async{
+    await _authentification.signOut();
+  }
 }

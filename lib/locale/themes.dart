@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:gestion_fournisseur/controllers/dark_light_mode_controller.dart';
+import 'package:get/get.dart';
 
 class Themes{
 
-  final Color secondaryColor=Colors.blue;
+  static  Color secondaryColor=Get.find<DarkLightModeController>().secondaryColor==Colors.blue?Colors.blue:Colors.green;
 
   // Light Mode
   static ThemeData lightMode = ThemeData.light().copyWith(
@@ -14,14 +16,13 @@ class Themes{
       onBackground: Colors.black,
       primary: Colors.grey[200] as Color,
       onPrimary: Colors.grey[800] as Color,
-      secondary: Colors.blue,
+      secondary: secondaryColor,
       onSecondary: Colors.grey[600] as Color,
       inversePrimary:const Color.fromARGB(49, 42, 55, 60)
     ),
 
     // Appbar Theme
     appBarTheme: AppBarTheme(
-
       backgroundColor: Colors.transparent,
       elevation: 0,
       iconTheme: IconThemeData(
@@ -39,7 +40,6 @@ class Themes{
 
     // Texfields Theme
     inputDecorationTheme: InputDecorationTheme(
-
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10),
         borderSide: BorderSide(
@@ -50,8 +50,8 @@ class Themes{
 
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10),
-        borderSide: const BorderSide(
-          color: Colors.blue,
+        borderSide: BorderSide(
+          color: secondaryColor,
           width: 2.0,
         ),
       ),
@@ -69,9 +69,9 @@ class Themes{
         color: Colors.grey[600] as Color,
       ),
 
-      floatingLabelStyle:const TextStyle(
+      floatingLabelStyle: TextStyle(
         fontSize: 16.0,
-        color: Colors.blue,
+        color: secondaryColor,
       ),
 
       errorBorder: OutlineInputBorder(
@@ -100,10 +100,10 @@ class Themes{
     ),
 
     // Text Selection Theme
-    textSelectionTheme: const TextSelectionThemeData(
-      cursorColor: Colors.blue,
-      selectionColor: Color.fromARGB(131, 76, 175, 79),
-      selectionHandleColor: Colors.blue,
+    textSelectionTheme:  TextSelectionThemeData(
+      cursorColor: secondaryColor,
+      selectionColor:const Color.fromARGB(131, 76, 175, 79),
+      selectionHandleColor: secondaryColor,
     ),
 
     //Elevated Button Theme
@@ -111,7 +111,7 @@ class Themes{
 
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all<Color>(
-          Colors.blue
+          secondaryColor
         ),
 
         foregroundColor:MaterialStateProperty.all<Color>(
@@ -140,7 +140,7 @@ class Themes{
     ),
 
     floatingActionButtonTheme: FloatingActionButtonThemeData(
-      backgroundColor: Colors.blue,
+      backgroundColor: secondaryColor,
       foregroundColor: Colors.white,
       splashColor: Colors.grey[100],
     )
@@ -157,7 +157,7 @@ class Themes{
       onBackground: Colors.white,
       primary: Colors.white10,
       onPrimary: Colors.white70,
-      secondary: Colors.blue,
+      secondary: secondaryColor,
       onSecondary: Colors.grey[400] as Color,
       primaryContainer: const Color.fromARGB(255, 29, 29, 29),
       inversePrimary:const Color.fromARGB(202, 39, 53, 59)
@@ -195,8 +195,8 @@ class Themes{
 
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10),
-        borderSide: const BorderSide(
-          color: Colors.blue,
+        borderSide: BorderSide(
+          color: secondaryColor,
           width: 2.0,
         ),
       ),
@@ -214,9 +214,9 @@ class Themes{
         color: Colors.grey,
       ),
 
-      floatingLabelStyle:const TextStyle(
+      floatingLabelStyle: TextStyle(
         fontSize: 16.0,
-        color: Colors.blue,
+        color: secondaryColor,
         fontWeight: FontWeight.w700
       ),
 
@@ -245,10 +245,10 @@ class Themes{
 
     ),
 
-    textSelectionTheme: const TextSelectionThemeData(
-      cursorColor: Colors.blue,
-      selectionColor: Color.fromARGB(131, 76, 175, 79),
-      selectionHandleColor: Colors.blue,
+    textSelectionTheme: TextSelectionThemeData(
+      cursorColor: secondaryColor,
+      selectionColor: const Color.fromARGB(131, 76, 175, 79),
+      selectionHandleColor: secondaryColor,
     ),
 
     //Elevated Button Theme
@@ -256,7 +256,7 @@ class Themes{
 
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all<Color>(
-          Colors.blue
+          secondaryColor
         ),
 
         foregroundColor:MaterialStateProperty.all<Color>(
@@ -285,7 +285,7 @@ class Themes{
     ),
 
     floatingActionButtonTheme: FloatingActionButtonThemeData(
-      backgroundColor: Colors.blue,
+      backgroundColor: secondaryColor,
       foregroundColor: Colors.black,
       splashColor: Colors.grey[100],
     )

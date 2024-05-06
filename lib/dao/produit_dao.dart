@@ -4,6 +4,7 @@ import 'package:gestion_fournisseur/models/produit.dart';
 
 
 class ProduitDao {
+  
   late CollectionReference _produits;
 
   ProduitDao(String fournisseurId){

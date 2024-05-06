@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:gestion_fournisseur/controllers/product_search_controller.dart';
 import 'package:gestion_fournisseur/controllers/produit_toggle_button_controller.dart';
@@ -9,17 +8,19 @@ import 'package:gestion_fournisseur/models/fournisseur.dart';
 import 'package:gestion_fournisseur/models/produit.dart';
 import 'package:gestion_fournisseur/screens/screen_widgets/products_alert_dialog.dart';
 import 'package:get/get.dart';
-
 import '../controllers/produit_controller.dart';
 import '../dao/produit_dao.dart';
 import '../widgets/product_container.dart';
 import '../widgets/product_toggle_button.dart';
 
 class ProductsScreen extends GetView {
+
+  // Field
   late final TextEditingController _searchController;
   late final DocumentSnapshot<Fournisseur> _fournisseurDocumentSnapshot;
   late final PageController _pageController;
 
+  // Constructor
   ProductsScreen({super.key}) {
     _searchController = TextEditingController();
     _fournisseurDocumentSnapshot = Get.arguments['fournisseurDocumentSnapshot'] as DocumentSnapshot<Fournisseur>;
@@ -44,9 +45,7 @@ class ProductsScreen extends GetView {
       backgroundColor: Theme.of(context).colorScheme.background,
       body: CustomScrollView(
         slivers: [
-          
           SliverAppBar(
-            
             title: CupertinoSearchTextField(
               itemColor: Theme.of(context).colorScheme.background,
               controller: _searchController,
@@ -93,7 +92,6 @@ class ProductsScreen extends GetView {
               centerTitle: false,
             ),
           ),
-      
           SliverToBoxAdapter(
             child: SizedBox(
               height: MediaQuery.of(context).size.height * 0.8, // Adjust height as needed
@@ -190,7 +188,6 @@ class ProductsScreen extends GetView {
                                                 ),
                                               ),
                                               const SizedBox(height: 5,),
-                                              
                                               Container(
                                                 padding: EdgeInsets.zero,
                                                 decoration: BoxDecoration(
@@ -233,7 +230,6 @@ class ProductsScreen extends GetView {
                                                 ),
                                               ),
                                               const SizedBox(height: 5,),
-                                              
                                               Container(
                                                 padding: EdgeInsets.zero,
                                                 decoration: BoxDecoration(
@@ -309,7 +305,6 @@ class ProductsScreen extends GetView {
                                             ],
                                           ),
                                         ),
-                                        
                                       ),
                                       const SizedBox(width: 3,),
                                       Flexible(
@@ -391,7 +386,6 @@ class ProductsScreen extends GetView {
                                             ],
                                           ),
                                         ),
-                                        
                                       ),
                                       const SizedBox(width: 3,),
                                       Flexible(
@@ -425,15 +419,12 @@ class ProductsScreen extends GetView {
                               );
                             }catch(e){
                               printError(info: e.toString());
-                              return SizedBox.shrink();
+                              return const SizedBox.shrink();
                             }
-                         
                         } 
                       ),
                     ),
                   )
-
-                  
                 ],
               ),
             ),
@@ -443,7 +434,3 @@ class ProductsScreen extends GetView {
     );
   }
 }
-
-
-
-

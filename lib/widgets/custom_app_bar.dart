@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gestion_fournisseur/controllers/authentification_controller.dart';
 import 'package:get/get.dart';
 
 import '../controllers/dark_light_mode_controller.dart';
@@ -74,6 +75,23 @@ class CustomAppBar extends GetView implements PreferredSizeWidget {
                     Text('25'.tr)
                   ],
                 )
+              ),
+              if(Get.currentRoute!="/")
+               PopupMenuItem(
+                value: "logout",
+                child: Row(
+                  children: [
+                    const Icon(
+                      Icons.logout_rounded,
+                      color: Colors.redAccent,
+                    ),
+                    const Padding(
+                      padding:  EdgeInsets.symmetric(horizontal: 4.0),
+                      child:  Text("  "),
+                    ),
+                    Text('66'.tr,style:const TextStyle(color: Colors.redAccent))
+                  ],
+                )
               )
             ],
             onSelected:  (value) {
@@ -83,6 +101,9 @@ class CustomAppBar extends GetView implements PreferredSizeWidget {
                   break;
                 case "themes":
                   
+                  break;
+                case "logout":
+                  Get.find<AuthentificationController>().signOut();
                   break;
               }
             },

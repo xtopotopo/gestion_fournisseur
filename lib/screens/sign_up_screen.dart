@@ -9,6 +9,7 @@ final _signUpFormKey = GlobalKey<FormState>();
 
 class SignUpScreen extends GetView{
 
+  // Fields
   late final TextEditingController _nomController;
   late final TextEditingController _prenomController;
   late final TextEditingController _emailController;
@@ -17,6 +18,7 @@ class SignUpScreen extends GetView{
   late final TextEditingController _passworController;
   late final TextEditingController _confimationPassworController;
 
+  // Constructor
   SignUpScreen({super.key}){
     _nomController=TextEditingController();
     _prenomController=TextEditingController();

@@ -42,14 +42,11 @@ class FournisseurDao{
 
   // Get specefic Fournisseur by a field
   Future<DocumentSnapshot?> getFournisseurByField(String field,{required String isEqualTo}) async{
-  var querySnapshot = await _fournisseurs.where(field, isEqualTo: isEqualTo).get();
-  if(querySnapshot.docs.isNotEmpty) {
-    return querySnapshot.docs.first;
-  } else {
-    return null;
-  }
-}
-
-
-  
+    var querySnapshot = await _fournisseurs.where(field, isEqualTo: isEqualTo).get();
+    if(querySnapshot.docs.isNotEmpty) {
+      return querySnapshot.docs.first;
+    } else {
+      return null;
+    }
+  }  
 }

@@ -16,7 +16,7 @@ class AppPages {
       name: "/",
       page: () => SignInScreen(),
       binding: AuthentificationBinding(),
-      transition: Transition.fadeIn,
+      transition: Transition.leftToRight,
       transitionDuration: const Duration(milliseconds: 400),
       children: [
         GetPage(
