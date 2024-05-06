@@ -82,4 +82,41 @@ class ProduitController extends GetxController {
     }
   }
 
+  double avgDepenses(List<DocumentSnapshot<Produit>> produits){
+    if(produits.isNotEmpty){
+      double temp=0;
+      double avg=0;
+      for(var produit in produits){
+        temp+=(produit.data()!.prixUnite*produit.data()!.quantite);
+      }
+      avg=temp/produits.length;
+      return double.parse(avg.toStringAsFixed(2));
+    }
+    return 0;
+  }
+
+  List<DocumentSnapshot<Produit>>? productAboveAVG(List<DocumentSnapshot<Produit>> produits){
+    if(produits.isNotEmpty){
+      double avg=avgDepenses(produits);
+      var products=produits.where(
+        (produitDocumentsnapshot) => (produitDocumentsnapshot.data()!.prixUnite*produitDocumentsnapshot.data()!.quantite)>=avg
+      ).toList();
+
+      return products;
+    }
+    return null;
+  }
+
+  List<DocumentSnapshot<Produit>>? productUnderAVG(List<DocumentSnapshot<Produit>> produits){
+    if(produits.isNotEmpty){
+      double avg=avgDepenses(produits);
+      var products=produits.where(
+        (produitDocumentsnapshot) => (produitDocumentsnapshot.data()!.prixUnite*produitDocumentsnapshot.data()!.quantite)<avg
+      ).toList();
+
+      return products;
+    }
+    return null;
+  }
+
 }

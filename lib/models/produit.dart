@@ -25,7 +25,7 @@ class Produit{
   String get description =>_description;
   double get prixUnite =>_prixUnite;
   String get unite =>_unite;
-  double get qunatite =>_quantite;
+  double get quantite =>_quantite;
   Timestamp get date =>_date;
 
   set nom(String value) =>_nom=value;

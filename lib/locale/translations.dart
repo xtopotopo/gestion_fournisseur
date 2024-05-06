@@ -61,8 +61,13 @@ class AppTranslations implements Translations{
       '54':"بريد إلكتروني غير صالح",
       '55':"تم إنشاء الحساب بنجاح",
       '56':"تأكيد كلمة المرور غير صالح",
-      '57':"تم إرسال بريد إلكتروني إليك"
-
+      '57':"تم إرسال بريد إلكتروني إليك",
+      '58': 'عدد المنتجات',
+      '59': 'وسيلة الإنفاق',
+      '60': 'المنتج فوق المتوسط',
+      '61': 'المنتج دون المتوسط',
+      '62': 'المنتجات',
+      '63': 'الإحصائيات',
     },
 
 
@@ -124,6 +129,12 @@ class AppTranslations implements Translations{
       '55':'Account created successfuly',
       '56':"Confirmation paswword invalid",
       '57':'An email is sent to you',
+      '58': 'Number of products',
+      '59': 'Means of expenditure',
+      '60': 'Above-average product',
+      '61': 'Below-average product',
+      '62': 'Products',
+      '63': 'Statistics',
     },
 
 
@@ -184,7 +195,13 @@ class AppTranslations implements Translations{
       '54':"Email invalide",
       '55':"Compte créé avec succès",
       '56':"Confirmation paswword invalid",
-      '57':"Un email vous a été envoyé"
+      '57':"Un email vous a été envoyé",
+      '58':'Nombre de produits',
+      '59':'Moyen de depences',
+      '60':'Produit superieur a la moyenne',
+      '61':'Produit inferieure a la moyenne',
+      '62':'Produits',
+      '63':'statistiques',
     }
   };
 }

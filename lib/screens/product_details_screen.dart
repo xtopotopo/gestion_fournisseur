@@ -21,15 +21,27 @@ class ProductDetailsScreen extends GetView{
     final Produit produit=(_produitDocumentSnapshot.data() as Produit);
     return Scaffold(
       appBar: AppBar(
-        
+        iconTheme: IconThemeData(
+          color: Theme.of(context).colorScheme.onBackground,
+          size: 29
+        ),
+        actions: 
+        [ 
+          Padding(
+            padding: const EdgeInsets.only(right:8.0),
+            child: IconButton(
+              onPressed: (){}, 
+              icon: const Icon(
+                Icons.file_download,
+              )
+            ),
+          ),
+        ],
       ),
       backgroundColor: Theme.of(context).colorScheme.background,
       floatingActionButton: FloatingActionButton(
         onPressed: (){
           ProduitAlertDialog.show(fournisseurId: _fournisseurDocumentSnapshot.id, context: context,type: Type.modify,productDocument: _produitDocumentSnapshot);
-         
-          
-         
         },
         child: Icon(
           Icons.edit,
@@ -127,7 +139,7 @@ class ProductDetailsScreen extends GetView{
                                     Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Text(
-                                        '${produit.qunatite} ${produit.unite}',
+                                        '${produit.quantite} ${produit.unite}',
                                         style:const  TextStyle(
                                           fontWeight: FontWeight.w300,
                                           fontSize: 15,
@@ -215,7 +227,7 @@ class ProductDetailsScreen extends GetView{
                 ),
                 const SizedBox(width: 5,),
                 Text(
-                  '${(produit.prixUnite*produit.qunatite).toString()} ${'38'.tr}',
+                  '${(produit.prixUnite*produit.quantite).toString()} ${'38'.tr}',
                   style:const  TextStyle(
                     color: Colors.red,
                     fontWeight: FontWeight.w500,

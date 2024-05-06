@@ -16,6 +16,7 @@ class Themes{
       onPrimary: Colors.grey[800] as Color,
       secondary: Colors.blue,
       onSecondary: Colors.grey[600] as Color,
+      inversePrimary:const Color.fromARGB(202, 39, 53, 59)
     ),
 
     // Appbar Theme
@@ -158,7 +159,9 @@ class Themes{
       onPrimary: Colors.white70,
       secondary: Colors.blue,
       onSecondary: Colors.grey[400] as Color,
-      primaryContainer: const Color.fromARGB(255, 29, 29, 29)
+      primaryContainer: const Color.fromARGB(255, 29, 29, 29),
+      inversePrimary:const Color.fromARGB(202, 39, 53, 59)
+
     ),
 
     // Appbar Theme

@@ -23,7 +23,7 @@ class ProduitAlertDialog {
 
 
     if(productDocument!=null){
-      quantiteController.text=productDocument.data()!.qunatite.toString();
+      quantiteController.text=productDocument.data()!.quantite.toString();
       descriptionController.text=productDocument.data()!.description;
       prixUniteController.text=productDocument.data()!.prixUnite.toString();
       nomController.text=productDocument.data()!.nom;
@@ -82,7 +82,7 @@ class ProduitAlertDialog {
                             Text(
                               (type==Type.add)
                               ?'42'.tr
-                              :'43',
+                              :'43'.tr,
                               style:const TextStyle(
                                 fontWeight: FontWeight.w800,
                                 fontSize: 18

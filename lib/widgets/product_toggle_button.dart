@@ -2,35 +2,32 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../controllers/produit_toggle_button_controllse.dart';
 
-class CustomProductToggleButton extends GetView {
-  const CustomProductToggleButton({
-    super.key,
-  });
+class ProductToggleButton extends GetView {
+  final PageController pageController;
+
+  const ProductToggleButton({required this.pageController, super.key});
 
   @override
   Widget build(BuildContext context) {
     return GetBuilder<ProduitToggleButtonController>(
-    builder: (controller) {
-      return Container(
-        height: 45,
-        padding: const EdgeInsets.all(2),
-        decoration: BoxDecoration(
-          border: Border.all(
-            color: Theme.of(context).colorScheme.onBackground
-          ),
-          borderRadius: BorderRadius.circular(50)
-        ), 
-          child: ToggleButtons(
-            onPressed: (index){
-              controller.toggle(index);
-            }, 
-            fillColor: Color.fromARGB(90, 104, 104, 104),
-            
+      builder: (controller) {
+        return Container(
+          height: 35,
+          padding: const EdgeInsets.all(0),
+          decoration: BoxDecoration(
+            color: Theme.of(context).colorScheme.background,
             borderRadius: BorderRadius.circular(50),
-            borderColor: Colors.transparent,
+            border: null
+          ),
+          child: ToggleButtons(
+            onPressed: (index) {
+              controller.changePage(selectedIndex: index, pageController: pageController);
+            },
+            fillColor: Colors.blueGrey.shade500,
+            borderRadius: BorderRadius.circular(50),
+            
             isSelected: controller.isSelected,
-            children: 
-            [
+            children: [
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
@@ -43,7 +40,7 @@ class CustomProductToggleButton extends GetView {
                 ),
               ),
               Padding(
-                padding:const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(8.0),
                 child: Text(
                   "Statistics",
                   style: TextStyle(
@@ -55,8 +52,8 @@ class CustomProductToggleButton extends GetView {
               )
             ],
           ),
-      );
-    }
-          );
+        );
+      },
+    );
   }
 }
