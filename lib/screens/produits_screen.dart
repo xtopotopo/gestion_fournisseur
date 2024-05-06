@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:gestion_fournisseur/controllers/product_search_controller.dart';
-import 'package:gestion_fournisseur/controllers/produit_toggle_button_controllse.dart';
+import 'package:gestion_fournisseur/controllers/produit_toggle_button_controller.dart';
 import 'package:gestion_fournisseur/models/fournisseur.dart';
 import 'package:gestion_fournisseur/models/produit.dart';
 import 'package:gestion_fournisseur/screens/screen_widgets/products_alert_dialog.dart';
@@ -147,7 +147,7 @@ class ProductsScreen extends GetView {
                       );
                     }
                   ),
-
+                  const SizedBox(),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10.0),
                     child: SizedBox(

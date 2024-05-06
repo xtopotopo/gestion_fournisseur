@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import '../controllers/bottom_bar_controller.dart';
 import '../controllers/fournisseur_controller.dart';
 import '../controllers/fournisseur_search_controller.dart';
 
@@ -8,5 +9,7 @@ class MainScreenBindings extends Bindings{
   void dependencies() {
     Get.put(FournisseurSearchController(),permanent: true);
     Get.put(FournisseurController());
+    Get.put(BottomBarController());
+
   }
 }

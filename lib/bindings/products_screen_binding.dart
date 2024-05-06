@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 
 import '../controllers/product_search_controller.dart';
 import '../controllers/produit_controller.dart';
-import '../controllers/produit_toggle_button_controllse.dart';
+import '../controllers/produit_toggle_button_controller.dart';
 
 class ProductsScreenBindings extends Bindings{
 

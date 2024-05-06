@@ -1,99 +1,125 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../controllers/bottom_bar_controller.dart';
+
 class CustomBottomBar extends GetView {
-  const CustomBottomBar({
+
+  late final PageController _pageController;
+  CustomBottomBar(PageController pageController,{
     super.key,
-  });
+  }){
+    _pageController=pageController;
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-     
-     height: 60,
-     width: double.maxFinite,
-     decoration: BoxDecoration(
-       color: Theme.of(context).colorScheme.background,
-       boxShadow: [
-         BoxShadow(
-           color: Colors.grey.withOpacity(0.3),
-           spreadRadius: 1,
-           blurRadius: 5,
-           offset: const Offset(0, 3),
+    return GetBuilder<BottomBarController>(
+      builder: (controller) {
+        return Container(
+         
+         height: 45,
+         width: double.maxFinite,
+         decoration: BoxDecoration(
+          border: Border(
+            top: BorderSide(
+              width: 1,
+              color: Theme.of(context).colorScheme.inversePrimary
+            )
+          ),
+           color: Theme.of(context).colorScheme.background,
+           
          ),
-       ],
-     ),
-     child: Row(
-       crossAxisAlignment: CrossAxisAlignment.center,
-       mainAxisAlignment: MainAxisAlignment.spaceAround,
-       children: [
-         Expanded(
-           child: Padding(
-             padding: const EdgeInsets.only(right: 10.0),
-             child: Material(
-               color: Colors.transparent,
-               child: InkWell(
-                  borderRadius:const BorderRadius.all(Radius.elliptical(15, 50)),
-                  splashFactory: InkRipple.splashFactory,
-                  onTap: () {},
+         child: Row(
+           crossAxisAlignment: CrossAxisAlignment.center,
+           mainAxisAlignment: MainAxisAlignment.spaceAround,
+           children: [
+             Expanded(
+               child: Padding(
+                 padding: const EdgeInsets.only(right: 10.0),
+                 child: Material(
+                   color: Colors.transparent,
+                   child: InkWell(
+                      borderRadius:const BorderRadius.all(Radius.elliptical(15, 50)),
+                      splashFactory: InkRipple.splashFactory,
+                      onTap: () {
+                        controller.changePage(selectedIndex: 0, pageController: _pageController);
+                      },
+        
+                      highlightColor: Theme.of(context).colorScheme.secondary.withOpacity(0.2),
+                      splashColor: Theme.of(context).colorScheme.secondary.withOpacity(0.5),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            controller.iconList[0],
+                            color: (controller.selectedIndex==0)
+                            ?Theme.of(context).colorScheme.secondary
+                            :Theme.of(context).colorScheme.onBackground,
+                            size: 20,
+                          ),
+                          const SizedBox(height: 3),
+                          Text(
+                            '65'.tr,
+                            style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              color: (controller.selectedIndex==0)
+                              ?Theme.of(context).colorScheme.secondary
+                              :Theme.of(context).colorScheme.onBackground,
+                              fontSize: 10
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+               )  ,
+              ),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.only(left:8.0),
+                  child: Material(
+                    color: Colors.transparent,
+                    child: InkWell(
+                      borderRadius:const BorderRadius.all(Radius.elliptical(15, 50)),
+                      splashFactory: InkRipple.splashFactory,
+                      onTap: () {
+                        controller.changePage(selectedIndex: 1, pageController: _pageController);
 
-                  highlightColor: Theme.of(context).colorScheme.secondary.withOpacity(0.2),
-                  splashColor: Theme.of(context).colorScheme.secondary.withOpacity(0.5),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(
-                        Icons.home_filled,
-                        color: Theme.of(context).colorScheme.onBackground,
+                      },
+                      highlightColor: Theme.of(context).colorScheme.secondary.withOpacity(0.2),
+                      splashColor: Theme.of(context).colorScheme.secondary.withOpacity(0.5),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            controller.iconList[1],
+                            color: (controller.selectedIndex==1)
+                            ?Theme.of(context).colorScheme.secondary
+                            :Theme.of(context).colorScheme.onBackground,
+                            size: 20,
+                          ),
+                          const SizedBox(height: 3),
+                          Text(
+                            '64'.tr,
+                            style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              color: (controller.selectedIndex==1)
+                              ?Theme.of(context).colorScheme.secondary
+                              :Theme.of(context).colorScheme.onBackground,
+                              fontSize: 10
+                            ),
+                          ),
+                        ],
                       ),
-                      const SizedBox(height: 3),
-                      Text(
-                        "Home",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          color: Theme.of(context).colorScheme.onBackground,
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
                 ),
               ),
-           )  ,
+            ],
           ),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.only(left:8.0),
-              child: Material(
-                color: Colors.transparent,
-                child: InkWell(
-                  borderRadius:const BorderRadius.all(Radius.elliptical(15, 50)),
-                  splashFactory: InkRipple.splashFactory,
-                  onTap: () {},
-                  highlightColor: Theme.of(context).colorScheme.secondary.withOpacity(0.2),
-                  splashColor: Theme.of(context).colorScheme.secondary.withOpacity(0.5),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(
-                        Icons.business_rounded,
-                        color: Theme.of(context).colorScheme.secondary,
-                      ),
-                      const SizedBox(height: 3),
-                      Text(
-                        "Suppliers",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          color: Theme.of(context).colorScheme.secondary,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
+        );
+      }
     );
   }
 }

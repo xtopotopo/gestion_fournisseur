@@ -8,7 +8,6 @@ import 'package:gestion_fournisseur/models/fournisseur.dart';
 import 'package:gestion_fournisseur/widgets/fournisseur_container.dart';
 import 'package:get/get.dart';
 
-import '../widgets/custom_bottom_bar.dart';
 
 class FournisseurSceen extends GetView {
 
@@ -24,8 +23,6 @@ class FournisseurSceen extends GetView {
   Widget build(BuildContext context) {
 
     return Scaffold(
-     bottomNavigationBar: CustomBottomBar(),
-
 
       floatingActionButton: FloatingActionButton(
         onPressed: (){
@@ -38,6 +35,7 @@ class FournisseurSceen extends GetView {
       ),
       backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
+        toolbarHeight: 55,
         title: CupertinoSearchTextField(
           itemColor: Theme.of(context).colorScheme.background,
           controller: _searchController,

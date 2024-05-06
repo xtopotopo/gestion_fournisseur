@@ -68,6 +68,8 @@ class AppTranslations implements Translations{
       '61': 'المنتج دون المتوسط',
       '62': 'المنتجات',
       '63': 'الإحصائيات',
+      '64': 'مورد',
+      '65': 'الصفحة الرئيسية',
     },
 
 
@@ -135,6 +137,8 @@ class AppTranslations implements Translations{
       '61': 'Below-average product',
       '62': 'Products',
       '63': 'Statistics',
+      '64':'Suppliers',
+      '65':'Home',
     },
 
 
@@ -202,6 +206,9 @@ class AppTranslations implements Translations{
       '61':'Produit inferieure a la moyenne',
       '62':'Produits',
       '63':'statistiques',
+      '64':'Fournisseur',
+      '65':'Acceuil',
+      
     }
   };
 }

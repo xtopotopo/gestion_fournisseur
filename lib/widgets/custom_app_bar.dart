@@ -9,14 +9,16 @@ class CustomAppBar extends GetView implements PreferredSizeWidget {
   late final String? _title;
 
   CustomAppBar({super.key,String? title}){
-    _title=title??'';
+    _title=(title!=null)?'${title.substring(0,1).toUpperCase()}${title.substring(1).toLowerCase()}':'';
   }
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      toolbarHeight: 50,
-      title:(Get.currentRoute!="/") ?Text("${"1".tr} $_title"):null,
+      backgroundColor: (Get.currentRoute=='/')
+      ?Theme.of(context).colorScheme.background
+      :Theme.of(context).colorScheme.secondary,
+      title:(Get.currentRoute!="/") ?Text("${"1".tr} $_title",style: TextStyle(color: (Get.currentRoute!="/")?Theme.of(context).colorScheme.onBackground:null,),):null,
       actions: [
         Hero(
           tag: "tag-3",
@@ -27,6 +29,7 @@ class CustomAppBar extends GetView implements PreferredSizeWidget {
                   controller.toogle();
                 }, 
                 icon: controller.icon,
+                color: (Get.currentRoute!="/")?Theme.of(context).colorScheme.onBackground:null,
               );
             }
           ),
@@ -34,8 +37,9 @@ class CustomAppBar extends GetView implements PreferredSizeWidget {
         Hero(
           tag: "tag-4",
           child: PopupMenuButton<String>(
+            iconColor: (Get.currentRoute!="/")?Theme.of(context).colorScheme.onBackground:null,
             shape: RoundedRectangleBorder(
-              borderRadius:BorderRadius.circular(15), // Customize the radius here
+              borderRadius:BorderRadius.circular(15),
             ),
             itemBuilder: (context)=>[
                PopupMenuItem(
@@ -90,5 +94,5 @@ class CustomAppBar extends GetView implements PreferredSizeWidget {
   
   @override
   
-  Size get preferredSize => const Size.fromHeight(50);
+  Size get preferredSize => const Size.fromHeight(55);
 }

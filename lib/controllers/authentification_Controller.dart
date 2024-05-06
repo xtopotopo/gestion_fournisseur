@@ -99,7 +99,7 @@ class AuthentificationController extends GetxController{
 
       Navigator.pop(context);
       
-      Get.offAllNamed("/fournisseurScreen");
+      Get.offAllNamed("/mainScreen");
     }on FirebaseAuthException catch(e){
       Navigator.pop(context);
       if(e.code=='invalid-credential'){

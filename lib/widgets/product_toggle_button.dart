@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../controllers/produit_toggle_button_controllse.dart';
+import '../controllers/produit_toggle_button_controller.dart';
 
 class ProductToggleButton extends GetView {
   final PageController pageController;
@@ -23,7 +23,7 @@ class ProductToggleButton extends GetView {
             onPressed: (index) {
               controller.changePage(selectedIndex: index, pageController: pageController);
             },
-            fillColor: Colors.blueGrey.shade500,
+            fillColor: Colors.blueGrey.shade100.withOpacity(.5),
             borderRadius: BorderRadius.circular(50),
             
             isSelected: controller.isSelected,
