@@ -11,6 +11,18 @@ class SessionVariableController extends GetxController {
  
   set userID(String value) => _userID = value;
   set user(Utilisateur? value) =>_user = value;
+
+  bool isAdmin(){
+    return _user!.userType==UserType.admin;
+  }
+
+  bool isSuperUser(){
+    return _user!.userType==UserType.superUser;
+  }
+
+  bool isSpectator(){
+    return _user!.userType==UserType.spectator;
+  }
  
   // Clear method
   void clear() {

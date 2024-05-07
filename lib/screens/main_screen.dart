@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gestion_fournisseur/screens/dashboard_screen.dart';
 import 'package:gestion_fournisseur/screens/fournisseurs_screen.dart';
 import 'package:gestion_fournisseur/screens/home_screen.dart';
 import 'package:gestion_fournisseur/widgets/custom_bottom_bar.dart';
@@ -30,7 +31,8 @@ class MainScreen extends GetView{
         children: 
         [
           const HomeScreen(),
-          FournisseurSceen()
+          FournisseurSceen(),
+          DahsboardScreen()
         ],
       ),
     );

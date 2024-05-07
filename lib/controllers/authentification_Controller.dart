@@ -1,5 +1,6 @@
 // ignore_for_file: use_build_context_synchronously
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:gestion_fournisseur/controllers/session_variables_controller.dart';
@@ -47,16 +48,25 @@ class AuthentificationController extends GetxController{
         email.text.trim(), 
         numero.text.trim(), 
         cin.text.trim(), 
-        password.text.trim()
-      );
-      
-      await _authentificationDao.signUp(
-        email: utilisateur.email, 
-        password: utilisateur.mdp
+        password.text.trim(),
+        null
       );
 
-      await _utilisateurDao.addUtilisateur(utilisateur);
-      
+      DocumentSnapshot<Utilisateur>? userDocumentSnapshot = (await _utilisateurDao.isAllowed(cin.text.trim()));
+      Utilisateur? utilisateurFromDb = userDocumentSnapshot?.data();
+      if(utilisateurFromDb!= null && utilisateurFromDb.nom==''){
+        await _authentificationDao.signUp(
+          email: utilisateur.email, 
+          password: utilisateur.mdp
+        );
+
+        await _utilisateurDao.updateUtilisateur(
+          utilisateur: utilisateurFromDb.copyWith(nom:utilisateur.nom, prenom:utilisateur.prenom, email:utilisateur.email, numero:utilisateur.numero, cin:utilisateur.cin), 
+          documentId: userDocumentSnapshot!.id
+        );
+      }else if(utilisateurFromDb== null){
+        throw Exception('not-allowed-to-signup');
+      }
       
       Navigator.pop(context);
       CustomSnackbar.success(message:'55'.tr, context: context);
@@ -73,6 +83,8 @@ class AuthentificationController extends GetxController{
       Navigator.pop(context);
       if(e.toString()=="Exception: confirmation-password-invalid"){
         CustomSnackbar.failure(message:'56'.tr, context: context);
+      }else if(e.toString()=="Exception: not-allowed-to-signup"){
+        CustomSnackbar.failure(message:'not-allowed-to-signup'.tr, context: context);
       }else {
         CustomSnackbar.failure(message:'33'.tr, context: context);
       }

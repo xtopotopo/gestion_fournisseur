@@ -8,6 +8,8 @@ import 'package:gestion_fournisseur/models/fournisseur.dart';
 import 'package:gestion_fournisseur/widgets/fournisseur_container.dart';
 import 'package:get/get.dart';
 
+import '../controllers/session_variables_controller.dart';
+
 
 class FournisseurSceen extends GetView {
 
@@ -22,7 +24,8 @@ class FournisseurSceen extends GetView {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
+      floatingActionButton:(Get.find<SessionVariableController>().isAdmin() || Get.find<SessionVariableController>().isSuperUser())  
+      ?FloatingActionButton(
         onPressed: (){
           AddFournisseurAlertDialog.show(context);
         },
@@ -30,7 +33,8 @@ class FournisseurSceen extends GetView {
         foregroundColor: Theme.of(context).colorScheme.background,
         splashColor: Colors.grey[100],
         child: const Icon(Icons.add),
-      ),
+      )
+      :null,
       backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
         toolbarHeight: 55,

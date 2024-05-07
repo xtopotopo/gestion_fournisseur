@@ -21,7 +21,7 @@ class  InputValidation {
 
   static String? isNameValid(String lastName) {
     
-    final RegExp regex = RegExp(r'^[a-zA-z ]{3,25}$',);
+    final RegExp regex = RegExp(r'^[a-zA-z ]{1,25}$',);
     if(!regex.hasMatch(lastName)) return '9'.tr;
     return null;
     

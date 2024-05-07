@@ -3,8 +3,8 @@ import 'package:get/get.dart';
 
 class BottomBarController extends GetxController{
 
-  final List<IconData> _iconList=[Icons.home_filled,Icons.business_rounded];
-  final List<String> _titleList=['65','64'];
+  final List<IconData> _iconList=[Icons.home_filled,Icons.business_rounded,Icons.dashboard_customize_rounded];
+  final List<String> _titleList=['65','64','dashboard'];
   late int _selectedIndex=0;
 
   List<IconData> get iconList=>_iconList;

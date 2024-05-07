@@ -25,6 +25,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Get.put(SessionVariableController());
+
     Get.put(DarkLightModeController());
     Get.put(TranslationsController());
     

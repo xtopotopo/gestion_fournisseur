@@ -71,6 +71,11 @@ class AppTranslations implements Translations{
       '64': 'مورد',
       '65': 'الصفحة الرئيسية',
       '66':'تسجيل الخروج',
+      '67': 'لوحة القيادة',
+      '68': 'إضافة مستخدم', 
+      '69': 'اختر نوع المستخدم', 
+      '70': 'تمت إضافة المستخدم بنجاح',
+      '71': 'يرجى اختيار النوع',
     },
 
 
@@ -130,7 +135,7 @@ class AppTranslations implements Translations{
       '53':'Email already in use',
       '54':'Invalid email',
       '55':'Account created successfuly',
-      '56':"Confirmation paswword invalid",
+      '56':"Confirmation pasword invalid",
       '57':'An email is sent to you',
       '58': 'Number of products',
       '59': 'Means of expenditure',
@@ -141,6 +146,11 @@ class AppTranslations implements Translations{
       '64':'Suppliers',
       '65':'Home',
       '66':'Logout',
+      '67':'Dashboard',
+      '68':'Add user',
+      '69':'Choose user type',
+      '70':'User has been successfully added',
+      '71': 'Please choose the type',
     },
 
 
@@ -211,6 +221,11 @@ class AppTranslations implements Translations{
       '64':'Fournisseur',
       '65':'Acceuil',
       '66':'Déconnexion',
+      '67': 'Tableau de bord', 
+      '68': 'Ajouter un utilisateur',
+      '69': 'Choisissez le type d\'utilisateur',
+      '70': 'L\'utilisateur a été ajouté avec succès',
+      '71':'Veuillez sasir le type'
     }
   };
 }

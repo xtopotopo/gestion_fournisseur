@@ -6,6 +6,7 @@ import 'package:gestion_fournisseur/models/fournisseur.dart';
 import 'package:gestion_fournisseur/models/produit.dart';
 import 'package:get/get.dart';
 
+import '../controllers/session_variables_controller.dart';
 import 'screen_widgets/products_alert_dialog.dart';
 
 class ProductDetailsScreen extends GetView{
@@ -43,7 +44,8 @@ class ProductDetailsScreen extends GetView{
         ],
       ),
       backgroundColor: Theme.of(context).colorScheme.background,
-      floatingActionButton: FloatingActionButton(
+      floatingActionButton:(Get.find<SessionVariableController>().isAdmin() || Get.find<SessionVariableController>().isSuperUser())   
+      ?FloatingActionButton(
         onPressed: (){
           ProduitAlertDialog.show(fournisseurId: _fournisseurDocumentSnapshot.id, context: context,type: Type.modify,productDocument: _produitDocumentSnapshot);
         },
@@ -51,7 +53,8 @@ class ProductDetailsScreen extends GetView{
           Icons.edit,
           color: Theme.of(context).colorScheme.background,
         ),
-      ),
+      )
+      :null,
       body: ListView(
         children: 
         [

@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:gestion_fournisseur/controllers/session_variables_controller.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:gestion_fournisseur/controllers/product_search_controller.dart';
 import 'package:gestion_fournisseur/controllers/produit_toggle_button_controller.dart';
@@ -33,7 +34,8 @@ class ProductsScreen extends GetView {
     final Fournisseur fournisseur = _fournisseurDocumentSnapshot.data() as Fournisseur;
 
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
+      floatingActionButton:(Get.find<SessionVariableController>().isAdmin() || Get.find<SessionVariableController>().isSuperUser()) 
+      ?FloatingActionButton(
         onPressed: () {
           ProduitAlertDialog.show(fournisseurId: _fournisseurDocumentSnapshot.id, context: context, type: Type.add);
         },
@@ -41,7 +43,8 @@ class ProductsScreen extends GetView {
           Icons.add,
           color: Theme.of(context).colorScheme.background,
         ),
-      ),
+      )
+      :null,
       backgroundColor: Theme.of(context).colorScheme.background,
       body: CustomScrollView(
         slivers: [
@@ -145,7 +148,6 @@ class ProductsScreen extends GetView {
                       );
                     }
                   ),
-                  const SizedBox(),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10.0),
                     child: SizedBox(

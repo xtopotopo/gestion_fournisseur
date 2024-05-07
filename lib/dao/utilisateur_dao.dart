@@ -51,6 +51,19 @@ class UtilisateurDao{
     return false;
   }
 
+  // verify if ueser is allowed to sinUp
+  Future<DocumentSnapshot<Utilisateur>?> isAllowed(String cin) async{
+    QuerySnapshot<Utilisateur> querySnapshot = await _utilisateurs
+    .where("cin", isEqualTo: cin)
+    .get() as QuerySnapshot<Utilisateur>;
+
+    if(querySnapshot.docs.isNotEmpty){
+      return querySnapshot.docs.first;
+    }
+    return null;
+  }
+  
+
   // Get a Sream of <Utilisateur> method
   Stream<QuerySnapshot> getUtilisateurs(){
     return _utilisateurs.snapshots();
