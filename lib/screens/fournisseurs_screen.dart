@@ -51,6 +51,7 @@ class FournisseurSceen extends GetView {
           ),
         ),
         backgroundColor: Theme.of(context).colorScheme.secondary,
+        
       ),
       body: Padding(
         padding: const EdgeInsets.only(

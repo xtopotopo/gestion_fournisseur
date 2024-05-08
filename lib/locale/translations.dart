@@ -76,6 +76,14 @@ class AppTranslations implements Translations{
       '69': 'اختر نوع المستخدم', 
       '70': 'تمت إضافة المستخدم بنجاح',
       '71': 'يرجى اختيار النوع',
+      '72': 'غير مسموح لك بالتسجيل',
+      '73': 'المستخدم موجود بالفعل',
+      '74': 'حذف',
+      '75': 'إضافة مستخدم',
+      '76': 'حذف المستخدم',
+      '77': 'المستخدم غير موجود',
+      '78': 'تم حذف المستخدم بنجاح',
+      '79': 'لا يوجد منتج لتصديره'
     },
 
 
@@ -151,6 +159,14 @@ class AppTranslations implements Translations{
       '69':'Choose user type',
       '70':'User has been successfully added',
       '71': 'Please choose the type',
+      '72':'You\'re not allowed to signUp',
+      '73':'User already exists',
+      '74':'Delete',
+      '75':'Add user',
+      '76':'Delete user',
+      '77':'user-do-not-exists',
+      '78':'User got deleted successfully',
+      '79':'There is no product to export',
     },
 
 
@@ -225,7 +241,15 @@ class AppTranslations implements Translations{
       '68': 'Ajouter un utilisateur',
       '69': 'Choisissez le type d\'utilisateur',
       '70': 'L\'utilisateur a été ajouté avec succès',
-      '71':'Veuillez sasir le type'
+      '71':'Veuillez sasir le type',
+      '72': 'Vous n\'êtes pas autorisé à vous inscrire',
+      '73': 'L\'utilisateur existe déjà',
+      '74': 'Supprimer',
+      '75': 'Ajouter un utilisateur',
+      '76': 'Supprimer l\'utilisateur',
+      '77': 'L\'utilisateur n\'existe pas',
+      '78': 'L\'utilisateur a été supprimé avec succès',
+      '79': 'Il n\'y a aucun produit à exporter'
     }
   };
 }

@@ -53,8 +53,10 @@ class AuthentificationController extends GetxController{
       );
 
       DocumentSnapshot<Utilisateur>? userDocumentSnapshot = (await _utilisateurDao.isAllowed(cin.text.trim()));
-      Utilisateur? utilisateurFromDb = userDocumentSnapshot?.data();
-      if(utilisateurFromDb!= null && utilisateurFromDb.nom==''){
+      Utilisateur? utilisateurFromDb = userDocumentSnapshot?.data(); 
+      
+      if(utilisateurFromDb!= null){
+       if(utilisateurFromDb.nom!='') throw Exception('user-already-exists');
         await _authentificationDao.signUp(
           email: utilisateur.email, 
           password: utilisateur.mdp
@@ -64,6 +66,7 @@ class AuthentificationController extends GetxController{
           utilisateur: utilisateurFromDb.copyWith(nom:utilisateur.nom, prenom:utilisateur.prenom, email:utilisateur.email, numero:utilisateur.numero, cin:utilisateur.cin), 
           documentId: userDocumentSnapshot!.id
         );
+        
       }else if(utilisateurFromDb== null){
         throw Exception('not-allowed-to-signup');
       }
@@ -84,7 +87,9 @@ class AuthentificationController extends GetxController{
       if(e.toString()=="Exception: confirmation-password-invalid"){
         CustomSnackbar.failure(message:'56'.tr, context: context);
       }else if(e.toString()=="Exception: not-allowed-to-signup"){
-        CustomSnackbar.failure(message:'not-allowed-to-signup'.tr, context: context);
+        CustomSnackbar.failure(message:'72'.tr, context: context);
+      }else if(e.toString()=="Exception: user-already-exists"){
+        CustomSnackbar.failure(message:'73'.tr, context: context);
       }else {
         CustomSnackbar.failure(message:'33'.tr, context: context);
       }
