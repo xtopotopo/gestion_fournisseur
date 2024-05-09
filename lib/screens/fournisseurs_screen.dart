@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gestion_fournisseur/controllers/fournisseur_controller.dart';
 import 'package:gestion_fournisseur/screens/screen_widgets/add_fournisseur_alert_dialog.dart';
+import '../controllers/fournisseur_excel_controller.dart';
 import '../controllers/fournisseur_search_controller.dart';
 import 'package:gestion_fournisseur/models/fournisseur.dart';
 import 'package:gestion_fournisseur/widgets/fournisseur_container.dart';
@@ -51,7 +52,41 @@ class FournisseurSceen extends GetView {
           ),
         ),
         backgroundColor: Theme.of(context).colorScheme.secondary,
-        
+        actions: 
+              [
+                PopupMenuButton<String>(
+                  iconColor: Theme.of(context).colorScheme.onBackground,
+                  shape: RoundedRectangleBorder(
+                    borderRadius:BorderRadius.circular(15),
+                  ), 
+                  itemBuilder: (BuildContext context)=> [
+                    PopupMenuItem(
+                      value: "excport-excel",
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.file_download_rounded,
+                            color: Colors.green,
+                          ),
+                          const Padding(
+                            padding:  EdgeInsets.symmetric(horizontal: 4.0),
+                            child:  Text("  "),
+                          ),
+                          Text('Export Excel'.tr)
+                        ],
+                      )
+                    )
+                  ],
+                  onSelected: (value) async{
+                    switch (value) {
+                      case 'excport-excel':
+                       Get.find<FournisseurExcelController>().excportExcel(context);
+                        break;
+                      default:
+                    }
+                  },
+                )
+              ],
       ),
       body: Padding(
         padding: const EdgeInsets.only(
@@ -85,7 +120,8 @@ class FournisseurSceen extends GetView {
                     (documentSnapshot.data() as Fournisseur).nom.toLowerCase().contains(_searchController.text) ||
                     (documentSnapshot.data() as Fournisseur).numero.toLowerCase().contains(_searchController.text)
                   ).toList()
-                  :querySnapshot.docs.toList();
+                  :querySnapshot.docs;
+                  Get.find<FournisseurExcelController>().fournisseurs=fournisseurs;
                 return ListView.builder(
                   itemCount: fournisseurs.length,
                   itemBuilder: (context, index) {

@@ -13,13 +13,14 @@ class ProduitExcelController extends GetxController{
 
   // Field 
   late List<QueryDocumentSnapshot> produits;
+  late ProduitExcelDao _produitExcelDao;
 
   Future<void> excportExcel({required BuildContext context,required String fournisseurName}) async {
     try {
       
-      if(produits.isEmpty) throw Exception('no-product-to-upload');
-      ProduitExcelDao produitExcelDao=ProduitExcelDao();
-      String? filePath=await produitExcelDao.excportExcel(docs: produits, fournisseurName: fournisseurName);
+      if(produits.length==2) throw Exception('no-product-to-upload');
+      
+      String? filePath=await _produitExcelDao.excportExcel(docs: produits, fournisseurName: fournisseurName);
       if(filePath==null) throw Exception('_');
      
       
@@ -35,6 +36,12 @@ class ProduitExcelController extends GetxController{
 
 
     }
+  }
+
+  @override
+  void onInit() {
+    _produitExcelDao=ProduitExcelDao();
+    super.onInit();
   }
 
 }

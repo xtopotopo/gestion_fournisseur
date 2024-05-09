@@ -51,40 +51,40 @@ class ProductsScreen extends GetView {
         slivers: [
           SliverAppBar(
             actions: 
-        [
-          PopupMenuButton<String>(
-            iconColor: Theme.of(context).colorScheme.onBackground,
-            shape: RoundedRectangleBorder(
-              borderRadius:BorderRadius.circular(15),
-            ), 
-            itemBuilder: (BuildContext context)=> [
-              PopupMenuItem(
-                value: "excport-excel",
-                child: Row(
-                  children: [
-                     Icon(
-                      Icons.file_download_rounded,
-                      color: Theme.of(context).colorScheme.onBackground,
-                    ),
-                    const Padding(
-                      padding:  EdgeInsets.symmetric(horizontal: 4.0),
-                      child:  Text("  "),
-                    ),
-                    Text('Export Excel'.tr)
+              [
+                PopupMenuButton<String>(
+                  iconColor: Theme.of(context).colorScheme.onBackground,
+                  shape: RoundedRectangleBorder(
+                    borderRadius:BorderRadius.circular(15),
+                  ), 
+                  itemBuilder: (BuildContext context)=> [
+                    PopupMenuItem(
+                      value: "excport-excel",
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.file_download_rounded,
+                            color: Theme.of(context).colorScheme.onBackground,
+                          ),
+                          const Padding(
+                            padding:  EdgeInsets.symmetric(horizontal: 4.0),
+                            child:  Text("  "),
+                          ),
+                          Text('Export Excel'.tr)
+                        ],
+                      )
+                    )
                   ],
+                  onSelected: (value) async{
+                    switch (value) {
+                      case 'excport-excel':
+                        Get.find<ProduitExcelController>().excportExcel(context: context, fournisseurName: _fournisseurDocumentSnapshot.data()!.nom);
+                        break;
+                      default:
+                    }
+                  },
                 )
-              )
-            ],
-            onSelected: (value) async{
-              switch (value) {
-                case 'excport-excel':
-                  Get.find<ProduitExcelController>().excportExcel(context: context, fournisseurName: _fournisseurDocumentSnapshot.data()!.nom);
-                  break;
-                default:
-              }
-            },
-          )
-        ],
+              ],
             title: CupertinoSearchTextField(
               itemColor: Theme.of(context).colorScheme.background,
               controller: _searchController,
