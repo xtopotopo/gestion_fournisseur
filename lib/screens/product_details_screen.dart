@@ -6,6 +6,7 @@ import 'package:gestion_fournisseur/models/fournisseur.dart';
 import 'package:gestion_fournisseur/models/produit.dart';
 import 'package:get/get.dart';
 
+import '../controllers/produit_pdf_controller.dart';
 import '../controllers/session_variables_controller.dart';
 import 'screen_widgets/products_alert_dialog.dart';
 
@@ -19,6 +20,7 @@ class ProductDetailsScreen extends GetView{
   ProductDetailsScreen({super.key}){
     _produitDocumentSnapshot=Get.arguments['productDocumentSnapshot'] as DocumentSnapshot<Produit>;
     _fournisseurDocumentSnapshot=Get.arguments['fournisseurDocumentSnapshot'] as DocumentSnapshot<Fournisseur>;
+    Get.find<ProduitPdfController>().productDocumentSnapshot=_produitDocumentSnapshot;
   }
 
   @override
@@ -35,7 +37,9 @@ class ProductDetailsScreen extends GetView{
           Padding(
             padding: const EdgeInsets.only(right:8.0),
             child: IconButton(
-              onPressed: (){}, 
+              onPressed: () async{
+                Get.find<ProduitPdfController>().exportPdf(fournisseurName: _fournisseurDocumentSnapshot.data()!.nom, context: context);
+              }, 
               icon: const Icon(
                 Icons.file_download,
               )

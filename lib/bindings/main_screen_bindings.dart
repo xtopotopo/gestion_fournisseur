@@ -1,6 +1,7 @@
 import 'package:gestion_fournisseur/controllers/authentification_controller.dart';
 import 'package:get/get.dart';
 import '../controllers/bottom_bar_controller.dart';
+import '../controllers/caroussel_slider_controller.dart';
 import '../controllers/dashboard_controller.dart';
 import '../controllers/fournisseur_controller.dart';
 import '../controllers/fournisseur_excel_controller.dart';
@@ -16,6 +17,7 @@ class MainScreenBindings extends Bindings{
     Get.put(BottomBarController());
     Get.lazyPut(() => AuthentificationController());
     Get.put(DashboardController());
+    Get.put(CarousselSliderController());
     Get.lazyPut(() => UtilisarteurController());
     Get.lazyPut(() => FournisseurExcelController());
 

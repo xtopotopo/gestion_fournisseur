@@ -7,6 +7,7 @@ import 'package:gestion_fournisseur/screens/sign_in_screen.dart';
 import 'package:gestion_fournisseur/screens/sign_up_screen.dart';
 import 'package:get/get.dart';
 
+import '../bindings/product_details_screen_bindings.dart';
 import '../bindings/products_screen_binding.dart';
 import '../screens/reset_password_screen.dart';
 
@@ -52,6 +53,7 @@ class AppPages {
     GetPage(
       name: "/productDetailsScreen", 
       page: () => ProductDetailsScreen(),
+      binding: ProductDetailsScreenBindings(),
       transition: Transition.rightToLeftWithFade,
       transitionDuration: const Duration(milliseconds: 400),
     )
