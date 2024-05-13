@@ -9,9 +9,27 @@ import 'package:syncfusion_flutter_xlsio/xlsio.dart';
 
 class FournisseurExcelDao {
 
-  Future<String?> excportProduitExcel(List<DocumentSnapshot> docs) async{
+  Future<String?> excportProduitExcelAndroidVersion(List<DocumentSnapshot> docs) async{
     try {
-      int i=1;
+     
+
+      final List<int> bytes=getEXcelBytes(docs);
+
+
+      final String path=(await getApplicationSupportDirectory()).path;
+      final File file=File('$path/fournisseurs.xlsx');
+      await file.writeAsBytes(bytes, flush: true);
+
+       return file.path;
+       
+    } catch (e) {
+      printError(info: e.toString());
+      return null;
+    }
+  }
+
+  List<int> getEXcelBytes(List<DocumentSnapshot> docs){
+    int i=1;
       final Workbook workboob=Workbook();
       final Worksheet sheet=workboob.worksheets[0];
       sheet.name='Fournisseur';
@@ -27,18 +45,6 @@ class FournisseurExcelDao {
         sheet.getRangeByName('C$i').setText(fournisseur.numero);
       }
 
-      final List<int> bytes=workboob.saveAsStream();
-      workboob.dispose();
-
-      final String path=(await getApplicationSupportDirectory()).path;
-      final File file=File('$path/fournisseurs.xlsx');
-      await file.writeAsBytes(bytes, flush: true);
-
-       return file.path;
-       
-    } catch (e) {
-      printError(info: e.toString());
-      return null;
-    }
+      return workboob.saveAsStream();
   }
 }

@@ -51,7 +51,7 @@ class ProductDetailsScreen extends GetView{
       floatingActionButton:(Get.find<SessionVariableController>().isAdmin() || Get.find<SessionVariableController>().isSuperUser())   
       ?FloatingActionButton(
         onPressed: (){
-          ProduitAlertDialog.show(fournisseurId: _fournisseurDocumentSnapshot.id, context: context,type: Type.modify,productDocument: _produitDocumentSnapshot);
+          ProduitAlertDialog.show(fournisseurId: _fournisseurDocumentSnapshot.id, context: context,type: ProductAlertDialogType.modify,productDocument: _produitDocumentSnapshot);
         },
         child: Icon(
           Icons.edit,

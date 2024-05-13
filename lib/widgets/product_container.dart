@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+
 import '../models/produit.dart';
 
 class ProductContainer extends StatelessWidget {
@@ -36,9 +37,15 @@ class ProductContainer extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
-              (description.length>50)
-              ?"${description.substring(0,47)}..."
-              :description,
+              (MediaQuery.of(context).size.width<700)
+                ?(description.length>50)
+                  ?"${description.substring(0,47)}..."
+                  :description
+                :(MediaQuery.of(context).size.height<700)
+                  ?(description.length>8)
+                    ?"${description.substring(0,10)}..."
+                    :description
+                  :description,
               style:  TextStyle(
                 fontWeight: FontWeight.w400,
                 color: Theme.of(context).colorScheme.onPrimary,

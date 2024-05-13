@@ -3,10 +3,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:gestion_fournisseur/dao/produit_excel_dao.dart';
-
+import 'package:universal_html/html.dart' show AnchorElement;
+import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:open_file/open_file.dart';
-
+import 'package:flutter/foundation.dart' show kIsWeb;
 import '../screens/screen_widgets/custom_snackbar.dart';
 
 class ProduitExcelController extends GetxController{
@@ -19,12 +20,20 @@ class ProduitExcelController extends GetxController{
     try {
       
       if(produits.length==2) throw Exception('no-product-to-upload');
-      
-      String? filePath=await _produitExcelDao.excportExcel(docs: produits, fournisseurName: fournisseurName);
-      if(filePath==null) throw Exception('_');
-     
-      
-      await OpenFile.open(filePath);
+
+      if(kIsWeb){
+        List<int> bytes=_produitExcelDao.getExcelBytes(docs: produits, fournisseurName: fournisseurName);
+        AnchorElement(
+          href:
+              'data:application/octet-stream;charset=utf-16le;base64,${base64.encode(bytes)}')
+          ..setAttribute('download', '$fournisseurName.xlsx')
+          ..click();
+      }else{
+        String? filePath=await _produitExcelDao.excportExcelAndroidVersion(docs: produits, fournisseurName: fournisseurName);
+        if(filePath==null) throw Exception('_');
+          
+        await OpenFile.open(filePath);
+      }
       
     } catch (e) {
        
