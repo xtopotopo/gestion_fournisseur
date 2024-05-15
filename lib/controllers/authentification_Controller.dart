@@ -3,7 +3,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:gestion_fournisseur/controllers/session_variables_controller.dart';
 import 'package:gestion_fournisseur/dao/authentification_dao.dart';
 import 'package:gestion_fournisseur/dao/utilisateur_dao.dart';
 import 'package:gestion_fournisseur/models/utilisateur.dart';
@@ -11,6 +10,7 @@ import 'package:get/get.dart';
 
 import '../screens/screen_widgets/circular_progress_indicror.dart';
 import '../screens/screen_widgets/custom_snackbar.dart';
+import '../services/session_variables_controller.dart';
 
 class AuthentificationController extends GetxController{
 
@@ -110,8 +110,8 @@ class AuthentificationController extends GetxController{
         password: passwordText
       );
 
-      Get.find<SessionVariableController>().userID=(await _utilisateurDao.getUtilisateur(emailText)).id;
-      Get.find<SessionVariableController>().user=((await _utilisateurDao.getUtilisateur(emailText)).data()) as Utilisateur;
+      Get.find<SessionVariableService>().userID=(await _utilisateurDao.getUtilisateur(emailText)).id;
+      Get.find<SessionVariableService>().user=((await _utilisateurDao.getUtilisateur(emailText)).data()) as Utilisateur;
 
 
       Navigator.pop(context);
@@ -165,7 +165,7 @@ class AuthentificationController extends GetxController{
 
   Future<void> signOut() async{
     await _authentificationDao.signOut();
-    Get.find<SessionVariableController>().clear();
+    Get.find<SessionVariableService>().clear();
     Get.offAllNamed("/");
   }
 }

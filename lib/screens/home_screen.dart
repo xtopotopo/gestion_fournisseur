@@ -2,12 +2,12 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
-import 'package:gestion_fournisseur/controllers/session_variables_controller.dart';
 import 'package:gestion_fournisseur/models/utilisateur.dart';
 import 'package:gestion_fournisseur/widgets/custom_app_bar.dart';
 import 'package:get/get.dart';
 
 import '../controllers/caroussel_slider_controller.dart';
+import '../services/session_variables_controller.dart';
 
 
 class HomeScreen extends GetView {
@@ -16,7 +16,7 @@ class HomeScreen extends GetView {
   late Utilisateur? _user;
   
   HomeScreen({super.key,}){
-    _user = Get.find<SessionVariableController>().user;
+    _user = Get.find<SessionVariableService>().user;
     _pageController=PageController(initialPage: 0);
     Get.find<CarousselSliderController>().startTimer(_pageController);
   }

@@ -5,10 +5,11 @@ import 'package:gestion_fournisseur/controllers/fournisseur_controller.dart';
 import 'package:gestion_fournisseur/screens/screen_widgets/add_fournisseur_alert_dialog.dart';
 import '../../controllers/fournisseur_excel_controller.dart';
 import '../../controllers/fournisseur_search_controller.dart';
-import '../../controllers/session_variables_controller.dart';
 import 'package:gestion_fournisseur/models/fournisseur.dart';
 import 'package:gestion_fournisseur/widgets/fournisseur_container.dart';
 import 'package:get/get.dart';
+
+import '../../services/session_variables_controller.dart';
 
 
 
@@ -25,7 +26,7 @@ class FournisseurDesktopSceen extends GetView {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton:(Get.find<SessionVariableController>().isAdmin() || Get.find<SessionVariableController>().isSuperUser())  
+      floatingActionButton:(Get.find<SessionVariableService>().isAdmin() || Get.find<SessionVariableService>().isSuperUser())  
       ?FloatingActionButton(
         onPressed: (){
           AddFournisseurAlertDialog.show(context);

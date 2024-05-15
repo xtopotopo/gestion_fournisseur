@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../controllers/bottom_bar_controller.dart';
-import '../controllers/session_variables_controller.dart';
+import '../services/session_variables_controller.dart';
 
 class CustomBottomBar extends GetView {
 
@@ -117,7 +117,7 @@ class CustomBottomBar extends GetView {
                   ),
                 ),
               ),
-              if(Get.find<SessionVariableController>().isAdmin()) Expanded(
+              if(Get.find<SessionVariableService>().isAdmin()) Expanded(
                 child: Padding(
                   padding: const EdgeInsets.only(left:8.0),
                   child: Material(

@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -10,13 +12,23 @@ class ProductsScreen extends GetView {
 
   // Field
   late final TextEditingController _searchController;
-  late final DocumentSnapshot<Fournisseur> _fournisseurDocumentSnapshot;
   late final PageController _pageController;
+  late final Fournisseur? _fournisseur;
+  late final String? _fournniseurId;
 
   // Constructor
   ProductsScreen({super.key}) {
-    _searchController = TextEditingController();
-    _fournisseurDocumentSnapshot = Get.arguments['fournisseurDocumentSnapshot'] as DocumentSnapshot<Fournisseur>;
+    _searchController = TextEditingController(); 
+    _fournniseurId= Get.parameters['fournisseurId'];
+    final dataString = Get.parameters['fournisseurJson'];
+   
+    if (dataString != null) {
+      _fournisseur = Fournisseur.fromJson(jsonDecode(Uri.decodeComponent(dataString))) ;
+      printError(info: _fournisseur.toString());
+      printError(info: _fournniseurId!);
+    } else {
+      _fournisseur=null;
+    }
     _pageController = PageController(initialPage: 0);
   }
 
@@ -29,13 +41,15 @@ class ProductsScreen extends GetView {
         if(constraints.maxWidth<700){
           return ProductsMobileScreen(
             searchController: _searchController, 
-            fournisseurDocumentSnapshot: _fournisseurDocumentSnapshot, 
+            fournisseur: _fournisseur!,
+            fournisseurId:_fournniseurId!,
             pageController: _pageController
           );
         }else{
           return ProductsDesktopScreen(
             searchController: _searchController, 
-            fournisseurDocumentSnapshot: _fournisseurDocumentSnapshot, 
+            fournisseur: _fournisseur!,
+            fournisseurId:_fournniseurId!,
             pageController: _pageController
           );
         }

@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:gestion_fournisseur/controllers/session_variables_controller.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:gestion_fournisseur/controllers/product_search_controller.dart';
 import 'package:gestion_fournisseur/controllers/produit_toggle_button_controller.dart';
@@ -13,6 +12,7 @@ import 'package:get/get.dart';
 import '../../controllers/produit_controller.dart';
 import '../../controllers/produit_excel_controller.dart';
 import '../../dao/produit_dao.dart';
+import '../../services/session_variables_controller.dart';
 import '../../widgets/product_container.dart';
 import '../../widgets/product_toggle_button.dart';
 
@@ -20,33 +20,35 @@ class ProductsDesktopScreen extends GetView {
 
   // Field
   late final TextEditingController _searchController;
-  late final DocumentSnapshot<Fournisseur> _fournisseurDocumentSnapshot;
+  late final Fournisseur _fournisseur;
+  late final String _fournisseurId;
   late final PageController _pageController;
 
-  // Constructor
+   // Constructor
   ProductsDesktopScreen(
     {
       super.key,
       required TextEditingController searchController,
-      required DocumentSnapshot<Fournisseur> fournisseurDocumentSnapshot,
+      required Fournisseur fournisseur,
+      required String fournisseurId,
       required PageController pageController,
     }
   ) {
     _searchController = searchController;
-    _fournisseurDocumentSnapshot = fournisseurDocumentSnapshot;
+    _fournisseur = fournisseur;
     _pageController = pageController;
+    _fournisseurId=fournisseurId;
   }
 
   @override
   Widget build(BuildContext context) {
-    final ProduitDao produitDao = ProduitDao(_fournisseurDocumentSnapshot.id);
-    final Fournisseur fournisseur = _fournisseurDocumentSnapshot.data() as Fournisseur;
+    final ProduitDao produitDao = ProduitDao(_fournisseurId);
 
     return Scaffold(
-      floatingActionButton:(Get.find<SessionVariableController>().isAdmin() || Get.find<SessionVariableController>().isSuperUser()) 
+      floatingActionButton:(Get.find<SessionVariableService>().isAdmin() || Get.find<SessionVariableService>().isSuperUser()) 
       ?FloatingActionButton(
         onPressed: () {
-          ProduitAlertDialog.show(fournisseurId: _fournisseurDocumentSnapshot.id, context: context, type: ProductAlertDialogType.add);
+          ProduitAlertDialog.show(fournisseurId: _fournisseurId, context: context, type: ProductAlertDialogType.add);
         },
         child: Icon(
           Icons.add,
@@ -86,7 +88,7 @@ class ProductsDesktopScreen extends GetView {
                   onSelected: (value) async{
                     switch (value) {
                       case 'excport-excel':
-                        Get.find<ProduitExcelController>().excportExcel(context: context, fournisseurName: _fournisseurDocumentSnapshot.data()!.nom);
+                        Get.find<ProduitExcelController>().excportExcel(context: context, fournisseurName: _fournisseur.nom);
                         break;
                       default:
                     }
@@ -129,7 +131,7 @@ class ProductsDesktopScreen extends GetView {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            fournisseur.nom,
+                            _fournisseur.nom,
                             style: const TextStyle(fontSize: 26.0, fontWeight: FontWeight.w900),
                           ),
                           ProductToggleButton(pageController: _pageController,),

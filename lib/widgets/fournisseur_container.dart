@@ -1,4 +1,6 @@
 
+import 'dart:convert';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:gestion_fournisseur/models/fournisseur.dart';
@@ -95,10 +97,9 @@ class FournisseurContainer extends GetView{
               ),
               IconButton(
                 onPressed: (){
-                  Get.toNamed(
-                    "/productsScreen",arguments:
-                    {'fournisseurDocumentSnapshot':_documentSnapshot}
-                  );
+                  final data = (_documentSnapshot.data() as Fournisseur).toJson();
+                  final encodedData = Uri.encodeComponent(jsonEncode(data));
+                  Get.toNamed("/productsScreen?fournisseurJson=$encodedData&fournisseurId=${_documentSnapshot.id}");
 
                 }, 
                 icon: const Icon(Icons.arrow_forward_ios_rounded)
