@@ -69,7 +69,7 @@ class ProduitController extends GetxController {
       final Timestamp date=Timestamp.fromMillisecondsSinceEpoch(DateTime.parse(dateController.text).millisecondsSinceEpoch);
 
       await _produitDao.updateProduit(documentId: productId, produit: Produit(nom, description, prixUnite, unite, quantite, date));
-      Get.back();
+      Navigator.pop(context);
       CustomSnackbar.success(message: '50'.tr, context: context);
       
      

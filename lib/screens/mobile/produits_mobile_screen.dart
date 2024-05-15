@@ -50,9 +50,9 @@ class ProductsMobileScreen extends GetView {
         onPressed: () {
           ProduitAlertDialog.show(fournisseurId: _fournisseurId, context: context, type: ProductAlertDialogType.add);
         },
-        child: Icon(
+        child:const Icon(
           Icons.add,
-          color: Theme.of(context).colorScheme.background,
+          color: Colors.white,
         ),
       )
       :null,
@@ -60,10 +60,11 @@ class ProductsMobileScreen extends GetView {
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
+            
             actions: 
               [
                 PopupMenuButton<String>(
-                  iconColor: Theme.of(context).colorScheme.onBackground,
+                  iconColor: Colors.white,
                   shape: RoundedRectangleBorder(
                     borderRadius:BorderRadius.circular(15),
                   ), 
@@ -109,7 +110,7 @@ class ProductsMobileScreen extends GetView {
               ),
             ),
             floating: true,
-            iconTheme: IconThemeData(color: Theme.of(context).colorScheme.onBackground),
+            iconTheme: const IconThemeData(color: Colors.white),
             backgroundColor: Theme.of(context).colorScheme.secondary,
             expandedHeight: MediaQuery.of(context).size.height * 0.16,
             foregroundColor: Theme.of(context).colorScheme.onBackground,
@@ -128,7 +129,7 @@ class ProductsMobileScreen extends GetView {
                         children: [
                           Text(
                             _fournisseur.nom,
-                            style: const TextStyle(fontSize: 26.0, fontWeight: FontWeight.w900),
+                            style: const TextStyle(fontSize: 26.0, fontWeight: FontWeight.w900,color: Colors.white),
                           ),
                           ProductToggleButton(pageController: _pageController,),
                         ],
@@ -143,7 +144,7 @@ class ProductsMobileScreen extends GetView {
           ),
           SliverToBoxAdapter(
             child: SizedBox(
-              height: MediaQuery.of(context).size.height * 0.8, // Adjust height as needed
+              height: MediaQuery.of(context).size.height * 0.8, 
               child: PageView(
                 controller: _pageController,
                 onPageChanged:(value) {
@@ -184,23 +185,33 @@ class ProductsMobileScreen extends GetView {
             }
             final searchQuery = _searchController.text.trim().toLowerCase();
             QuerySnapshot querySnapshot = snapshot.data as QuerySnapshot;
-            Get.find<ProduitExcelController>().produits = (controller.onSearch)
+            List<QueryDocumentSnapshot>  documentSnapshot= (controller.onSearch)
             ? querySnapshot.docs.where((documenSnapshot) => (documenSnapshot.data() as Produit).nom.trim().toLowerCase().contains(searchQuery)).toList()
             : querySnapshot.docs;
+            Get.find<ProduitExcelController>().produits = documentSnapshot;
             return GridView.builder(
-              itemCount: Get.find<ProduitExcelController>().produits.length + 1,
+              itemCount: documentSnapshot.length + 1,
               gridDelegate:const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
                 mainAxisSpacing: 10.0,
               ), 
               itemBuilder: (BuildContext context, int index) {
-                
-                return (index >= Get.find<ProduitExcelController>().produits.length)
+                try{
+                  return (index >= documentSnapshot.length)
                   ? const SizedBox.shrink()
                   : Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                    child: ProductContainer(Get.find<ProduitExcelController>().produits[index] as DocumentSnapshot<Produit>),
+                    child: ProductContainer(
+                      documentSnapshot:  documentSnapshot[index] as DocumentSnapshot<Produit>,
+                      fournisseurId: _fournisseurId,
+                      fournisseurName: _fournisseur.nom,
+                    ),
                   );
+                }catch(e){
+                  printError(info: e.toString());
+                  return SizedBox();
+                }
+                
               },
             );
           },

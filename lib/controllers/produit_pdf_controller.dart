@@ -18,6 +18,7 @@ class ProduitPdfController extends GetxController{
   late DocumentSnapshot<Produit> _productDocumentSnapshot;
   late ProduitPdfDao _produitPdfDao;
   set productDocumentSnapshot(DocumentSnapshot<Produit> value)=>_productDocumentSnapshot=value;
+  DocumentSnapshot<Produit> get productDocumentSnapshot=>_productDocumentSnapshot;
 
   Future<void> exportPdf(
     {

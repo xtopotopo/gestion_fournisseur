@@ -49,6 +49,7 @@ class AppPages {
       binding: ProductsScreenBindings(),
       transition: Transition.rightToLeftWithFade,
       transitionDuration: const Duration(milliseconds: 400),
+ 
     ),
     GetPage(
       name: "/productDetailsScreen", 

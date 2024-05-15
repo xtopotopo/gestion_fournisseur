@@ -37,4 +37,8 @@ class ProduitDao {
   Stream<QuerySnapshot> getProduits(){
     return _produits.snapshots();
   }
+
+  Stream<DocumentSnapshot<Produit>> getProduit(String documentId){
+    return _produits.doc(documentId).snapshots() as Stream<DocumentSnapshot<Produit>>;
+  }
 }

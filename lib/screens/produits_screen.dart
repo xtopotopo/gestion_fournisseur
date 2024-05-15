@@ -1,6 +1,4 @@
 import 'dart:convert';
-
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gestion_fournisseur/screens/mobile/produits_mobile_screen.dart';
@@ -21,14 +19,10 @@ class ProductsScreen extends GetView {
     _searchController = TextEditingController(); 
     _fournniseurId= Get.parameters['fournisseurId'];
     final dataString = Get.parameters['fournisseurJson'];
-   
-    if (dataString != null) {
-      _fournisseur = Fournisseur.fromJson(jsonDecode(Uri.decodeComponent(dataString))) ;
-      printError(info: _fournisseur.toString());
-      printError(info: _fournniseurId!);
-    } else {
-      _fournisseur=null;
-    }
+    _fournisseur = Fournisseur.fromJson(jsonDecode(Uri.decodeComponent(dataString!))) ;
+    printError(info: _fournisseur.toString());
+    printError(info: _fournniseurId!);
+    
     _pageController = PageController(initialPage: 0);
   }
 

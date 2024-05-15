@@ -212,7 +212,11 @@ class ProductsDesktopScreen extends GetView {
                     padding:  EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width*.002),
                     child: SizedBox(
                       height: 10,
-                      child: ProductContainer(Get.find<ProduitExcelController>().produits[index] as DocumentSnapshot<Produit>)
+                      child: ProductContainer(
+                      documentSnapshot:  Get.find<ProduitExcelController>().produits[index] as DocumentSnapshot<Produit>,
+                      fournisseurId: _fournisseurId,
+                      fournisseurName: _fournisseur.nom,
+                    ),
                     ),
                   );
               },

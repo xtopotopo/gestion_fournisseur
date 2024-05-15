@@ -71,7 +71,7 @@ class ProduitDesktopAlertDialog {
                     top: 15
                   ),
                   height: 450,
-                  width: MediaQuery.of(context).size.width*0.5,
+                  width: MediaQuery.of(context).size.width*0.38,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
                     color: Theme.of(context).colorScheme.primaryContainer
@@ -162,6 +162,7 @@ class ProduitDesktopAlertDialog {
                                       fournisseurId: fournisseurId, 
                                       context: context
                                     );
+                                    Navigator.pop(context);
                                   }else if(type==ProductAlertDialogType.modify){
                                     Get.find<ProduitController>().updateProduit(
                                       nomController: nomController, 
@@ -176,7 +177,7 @@ class ProduitDesktopAlertDialog {
                                     );
                                     
                                   }
-                                  Navigator.pop(context);
+                                 
                                 }
                                 
                               }, 

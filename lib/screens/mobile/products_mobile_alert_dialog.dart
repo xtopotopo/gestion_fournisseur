@@ -162,6 +162,7 @@ class ProduitMobileAlertDialog {
                                       fournisseurId: fournisseurId, 
                                       context: context
                                     );
+                                    Navigator.pop(context);
                                   }else if(type==ProductAlertDialogType.modify){
                                     Get.find<ProduitController>().updateProduit(
                                       nomController: nomController, 
@@ -176,7 +177,6 @@ class ProduitMobileAlertDialog {
                                     );
                                     
                                   }
-                                  Navigator.pop(context);
                                 }
                                 
                               }, 

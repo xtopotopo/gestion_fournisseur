@@ -32,8 +32,8 @@ class DahsboardScreen extends GetView{
         backgroundColor: Theme.of(context).colorScheme.secondary,
         title: Text(
           '67'.tr,
-          style: TextStyle(
-            color: Theme.of(context).colorScheme.onBackground,
+          style:const TextStyle(
+            color: Colors.white,
           ),
         ),
       ),
