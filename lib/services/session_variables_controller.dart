@@ -14,12 +14,12 @@ class SessionVariableService extends GetxService {
 
   set userID(String value) {
     _userID = value;
-    _storage.write('userID', value);  // Save userID to GetStorage
+    _storage.write('userID', value);  
   }
 
   set user(Utilisateur? value) {
     _user = value;
-    _storage.write('user', value?.toJson());  // Save user to GetStorage
+    _storage.write('user', value?.toJson());  
   }
 
   bool isAdmin() {
@@ -38,7 +38,7 @@ class SessionVariableService extends GetxService {
   void clear() {
     _userID = '';
     _user = null;
-    _storage.erase();  // Clear all data from GetStorage
+    _storage.erase();  
   }
 
   // Load method

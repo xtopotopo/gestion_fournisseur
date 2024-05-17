@@ -5,23 +5,22 @@ import 'package:flutter/material.dart';
 import 'package:gestion_fournisseur/models/utilisateur.dart';
 import 'package:gestion_fournisseur/widgets/custom_app_bar.dart';
 import 'package:get/get.dart';
-
 import '../controllers/caroussel_slider_controller.dart';
 import '../services/session_variables_controller.dart';
 
 
 class HomeScreen extends GetView {
 
+  // Field
   late PageController _pageController;
   late Utilisateur? _user;
   
+  // Constructor
   HomeScreen({super.key,}){
     _user = Get.find<SessionVariableService>().user;
     _pageController=PageController(initialPage: 0);
     Get.find<CarousselSliderController>().startTimer(_pageController);
   }
-
-  
 
   @override
   Widget build(BuildContext context) {

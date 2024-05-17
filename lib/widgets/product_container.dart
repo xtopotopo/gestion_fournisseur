@@ -1,11 +1,7 @@
-import 'dart:convert';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:gestion_fournisseur/models/fournisseur.dart';
 import 'package:get/get.dart';
-
-
 import '../models/produit.dart';
 
 class ProductContainer extends StatelessWidget {

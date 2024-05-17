@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:gestion_fournisseur/controllers/product_search_controller.dart';
 import 'package:gestion_fournisseur/controllers/produit_toggle_button_controller.dart';
@@ -157,7 +158,16 @@ class ProductsDesktopScreen extends GetView {
                 physics: const NeverScrollableScrollPhysics(),
                 children: [
                   productsPage(produitDao),
-                  statisticsPage(produitDao)
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: (MediaQuery.of(context).size.width<800)
+                        ?0
+                        :(MediaQuery.of(context).size.width>600 && MediaQuery.of(context).size.width<800)
+                          ?MediaQuery.of(context).size.width*.2
+                          :MediaQuery.of(context).size.width*.3,
+                    ),
+                    child: statisticsPage(produitDao)
+                  )
                 ],
               ),
             ),
@@ -245,6 +255,7 @@ class ProductsDesktopScreen extends GetView {
               try{
                 return ListView(
                   children: [
+                    const SizedBox(height: 15,),
                     Row(
                       children: 
                       [
@@ -497,6 +508,7 @@ class ProductsDesktopScreen extends GetView {
                         ),
                       ],
                     ),
+                    const SizedBox(height: 15,)
                   ],
                 );
               }catch(e){
