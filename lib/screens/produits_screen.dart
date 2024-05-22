@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:gestion_fournisseur/screens/mobile/produits_mobile_screen.dart';
 import 'package:gestion_fournisseur/models/fournisseur.dart';
 import 'package:get/get.dart';
+import '../services/session_variables_controller.dart';
 import 'desktop/produits_desktop_screen.dart';
 
 class ProductsScreen extends GetView {
@@ -16,6 +17,7 @@ class ProductsScreen extends GetView {
 
   // Constructor
   ProductsScreen({super.key}) {
+    if(Get.find<SessionVariableService>().userID=='') Get.offAllNamed('/');
     _searchController = TextEditingController(); 
     _fournniseurId= Get.parameters['fournisseurId'];
     final dataString = Get.parameters['fournisseurJson'];

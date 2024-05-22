@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:gestion_fournisseur/controllers/auth_state_controller.dart';
 import 'package:gestion_fournisseur/screens/mobile/sign_up_mobile_screen.dart';
+import 'package:gestion_fournisseur/services/session_variables_controller.dart';
 import 'package:get/get.dart';
 
 import 'desktop/sign_up_desktop_screen.dart';
@@ -31,6 +33,7 @@ class SignUpScreen extends GetView{
   Widget build(BuildContext context) {
     return  Scaffold(
       body: LayoutBuilder(
+        
         builder: (context, constraints) {
           if(constraints.maxWidth<700){
             return SignUpMobileScreen(

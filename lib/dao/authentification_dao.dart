@@ -37,4 +37,9 @@ class AuthentificationDao{
   Future<void> signOut() async{
     await _authentification.signOut();
   }
+
+  Future<bool> checkUser() async {
+    User? user = FirebaseAuth.instance.currentUser;
+    return user != null;
+  }
 }

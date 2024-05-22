@@ -37,7 +37,10 @@ class MyApp extends StatelessWidget {
       darkTheme: Themes.darkMode,
       themeMode: Get.find<DarkLightModeController>().themMode,
       debugShowCheckedModeBanner: false,
-      initialRoute: '/',
+      initialRoute: (Get.find<SessionVariableService>().userID!='')
+      ?'/mainScreen'
+      :'/',
+      
     );
   }
 }

@@ -20,7 +20,7 @@ class ProductDetailsScreen extends GetView{
 
   // Constructor
   ProductDetailsScreen({super.key}){
-    printError(info: Get.parameters['fournisseurId']!);
+    if(Get.find<SessionVariableService>().userID=='') Get.offAllNamed('/');
     
     _fournisseurId=Get.parameters['fournisseurId']!;
     _produitId=Get.parameters['productId']!;
