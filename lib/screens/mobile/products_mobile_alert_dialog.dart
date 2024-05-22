@@ -123,7 +123,6 @@ class ProduitMobileAlertDialog {
                               CustomTextField.number( controller: prixUniteController, label: '37'.tr,),
                               const SizedBox(height: 12,),
                               CustomTextField.date( controller: dateController,),
-                              
                             ],
                           ),
                         ),
