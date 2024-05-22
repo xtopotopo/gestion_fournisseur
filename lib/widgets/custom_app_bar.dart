@@ -19,7 +19,7 @@ class CustomAppBar extends GetView implements PreferredSizeWidget {
       backgroundColor: (Get.currentRoute=='/')
       ?Theme.of(context).colorScheme.background
       :Theme.of(context).colorScheme.secondary,
-      title:(Get.currentRoute!="/") ?Text("${"1".tr} $_title",style: TextStyle(color: (Get.currentRoute!="/")?Theme.of(context).colorScheme.onBackground:null,),):null,
+      title:(Get.currentRoute!="/") ?Text("${"1".tr} $_title",style: TextStyle(color: (Get.currentRoute!="/")?Colors.white:null,),):null,
       actions: [
         Hero(
           tag: "tag-3",
@@ -30,7 +30,7 @@ class CustomAppBar extends GetView implements PreferredSizeWidget {
                   controller.toogle();
                 }, 
                 icon: controller.icon,
-                color: (Get.currentRoute!="/")?Theme.of(context).colorScheme.onBackground:null,
+                color: (Get.currentRoute!="/")?Colors.white:null,
               );
             }
           ),
@@ -38,7 +38,7 @@ class CustomAppBar extends GetView implements PreferredSizeWidget {
         Hero(
           tag: "tag-4",
           child: PopupMenuButton<String>(
-            iconColor: (Get.currentRoute!="/")?Theme.of(context).colorScheme.onBackground:null,
+            iconColor: (Get.currentRoute!="/")?Colors.white:null,
             shape: RoundedRectangleBorder(
               borderRadius:BorderRadius.circular(15),
             ),

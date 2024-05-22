@@ -1,7 +1,9 @@
 
 // ignore_for_file: must_be_immutable
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:gestion_fournisseur/models/utilisateur.dart';
 import 'package:gestion_fournisseur/widgets/custom_app_bar.dart';
 import 'package:get/get.dart';
@@ -43,7 +45,9 @@ class HomeScreen extends GetView {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20)
                       ),
-                      height: MediaQuery.of(context).size.height / 4,
+                      height:(MediaQuery.of(context).size.height>800)
+                        ?MediaQuery.of(context).size.height / 3
+                        :MediaQuery.of(context).size.height / 2,
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(0),
                         child: PageView.builder(
@@ -89,6 +93,187 @@ class HomeScreen extends GetView {
               }
             ),
           ),
+          const SizedBox(height: 20,),
+          SizedBox(
+            child: (MediaQuery.of(context).size.width<800)
+            ?Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Divider(color:Theme.of(context).colorScheme.inversePrimary ,),
+                const SizedBox(height: 7,),
+                Padding(
+                  padding: const EdgeInsets.only(left:11.0),
+                  child: Title(
+                    color:Theme.of(context).colorScheme.secondary,
+                    child: Text(
+                      '80'.tr,
+                      style: TextStyle(
+                        fontWeight: FontWeight.w900,
+                        fontSize: 15,
+                        color:Theme.of(context).colorScheme.secondary,
+                      ),
+                      
+                    )
+                  ),
+                ),
+                const Padding(
+                  padding:  EdgeInsets.all(30.0),
+                  child:  Row(
+                    children: [Expanded(child: Image(image: AssetImage('images/image5.jpeg')))],
+                  ),
+                ),
+               
+                Padding(
+                  padding: const EdgeInsets.only(left:13.0,right: 13),
+                  child: Text(
+                    '81'.tr,
+                    style:const TextStyle(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 14,
+                      
+                    )
+                  ),
+                ),
+                const SizedBox(height: 7,),
+                Divider(color:Theme.of(context).colorScheme.inversePrimary ,),
+                const SizedBox(height: 7,),
+                Padding(
+                  padding: const EdgeInsets.only(left:11.0),
+                  child: Title(
+                    color:Theme.of(context).colorScheme.secondary,
+                    child: Text(
+                     '82'.tr,
+                      style: TextStyle(
+                        fontWeight: FontWeight.w900,
+                        fontSize: 15,
+                        color:Theme.of(context).colorScheme.secondary,
+                      ),
+                      
+                    )
+                  ),
+                ),
+                const Row(
+                  children: [Expanded(child: Image(image: AssetImage('images/image4.png')))],
+                ),
+                const SizedBox(height: 15,),
+                Padding(
+                  padding: const EdgeInsets.only(left:13.0,right: 13),
+                  child: Text(
+                    '83'.tr,
+                    style:const TextStyle(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 14,
+                      
+                    )
+                  ),
+                ),
+                const SizedBox(height: 20,),
+              ],
+            )
+            :Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Divider(color:Theme.of(context).colorScheme.inversePrimary ,),
+                const SizedBox(height: 7,),
+                Padding(
+                  padding: const EdgeInsets.only(left:11.0),
+                  child: Title(
+                    color:Theme.of(context).colorScheme.secondary,
+                    child: Text(
+                      '80'.tr,
+                      style: TextStyle(
+                        fontWeight: FontWeight.w900,
+                        fontSize: 18,
+                        color:Theme.of(context).colorScheme.secondary,
+                      ),
+                      
+                    )
+                  ),
+                ),
+                const SizedBox(height: 15,),
+                Row(
+                  
+                  children: [
+                    const Expanded(
+                      child: SizedBox(
+                        height: 300,
+                        width: 100,
+                        
+                        child: Padding(
+                          padding: EdgeInsets.all(30.0),
+                          child: Image(image: AssetImage('images/image5.jpeg',),fit: BoxFit.cover,),
+                        )
+                      )
+                    ),
+                
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.only(left:13.0,right: 13),
+                        child: Text(
+                          '81'.tr,
+                          style:const TextStyle(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 16,
+                            
+                          )
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              
+                const SizedBox(height: 12,), 
+                Divider(color:Theme.of(context).colorScheme.inversePrimary ,),
+                const SizedBox(height: 15,),
+                Padding(
+                  padding: const EdgeInsets.only(left:11.0),
+                  child: Title(
+                    color:Theme.of(context).colorScheme.secondary,
+                    child: Text(
+                     '82'.tr,
+                      style: TextStyle(
+                        fontWeight: FontWeight.w900,
+                        fontSize: 18,
+                        color:Theme.of(context).colorScheme.secondary,
+                      ),
+                      
+                    )
+                  ),
+                ), 
+                const SizedBox(height: 15,),
+                Row(
+                  children: [
+                    
+                   
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.only(left:13.0,right: 13),
+                        child: Text(
+                          '83'.tr,
+                          style:const TextStyle(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 16,
+                            
+                          )
+                        ),
+                      ),
+                    ),
+                    const Expanded(
+                      child: SizedBox(
+                        height: 200,
+             
+                        child: Image(image: AssetImage('images/image4.png'),fit: BoxFit.contain,)
+                      )
+                    ),
+                  ],
+                ),
+              
+               
+                
+                const SizedBox(height: 7,),
+              ],
+            ),
+          )
         ],
       )
 

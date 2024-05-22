@@ -82,8 +82,16 @@ class ProductDetailsScreen extends GetView{
             final Produit produit=productDocumentSnapshot.data()!;
             Get.find<ProduitPdfController>().productDocumentSnapshot=productDocumentSnapshot;
             return ListView(
+              padding:  EdgeInsets.symmetric(
+                horizontal: (MediaQuery.of(context).size.width>=950)
+                  ?MediaQuery.of(context).size.width/4
+                  :(MediaQuery.of(context).size.width<950 && MediaQuery.of(context).size.width>=700)
+                    ?MediaQuery.of(context).size.width/5
+                    : 0
+              ),
               children: 
               [
+                  
                 Padding(
                   padding: const EdgeInsets.only(
                     left:10.0,

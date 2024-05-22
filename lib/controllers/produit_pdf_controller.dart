@@ -29,6 +29,7 @@ class ProduitPdfController extends GetxController{
     try {
       CircularProgreesIndicator.show(context);
       if(kIsWeb){
+    
         List<int> bytes=await _produitPdfDao.getPdfBytes(
           productDocumentSnapshot: _productDocumentSnapshot, 
           fournisseurName: fournisseurName

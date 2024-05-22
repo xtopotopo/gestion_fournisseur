@@ -83,7 +83,13 @@ class AppTranslations implements Translations{
       '76': 'حذف المستخدم',
       '77': 'المستخدم غير موجود',
       '78': 'تم حذف المستخدم بنجاح',
-      '79': 'لا يوجد منتج لتصديره'
+      '79': 'لا يوجد منتج لتصديره',
+      "80": "حل مبتكر للتجارة البحرية",
+      "81": "في مرسى المغرب، نفهم التحديات الفريدة التي يواجهها محترفو التجارة البحرية. لهذا السبب قمنا بتصميم تطبيق محمول يدمج أحدث التقنيات ليقدم لك تجربة مستخدم استثنائية. تتيح لك منصتنا مركزية جميع عملياتك، من إدارة المستندات إلى تنسيق اللوجستيات، والتواصل مع شركائك التجاريين. من خلال تبسيط هذه العمليات المعقدة، نساعدك على توفير الوقت، وتقليل التكاليف، وتحسين رضا العملاء.",
+      "82": "أداة مصممة لتلبية احتياجاتك",
+      "83": "تم تصميم تطبيقنا لتلبية الاحتياجات الخاصة بالشركات العاملة في القطاع البحري. سواء كنت مستوردًا، مصدرًا، أو موردًا، ستجد في منصتنا الميزات الضرورية لتحسين سلسلة التوريد الخاصة بك. تتبع الشحنات، إدارة المخزون، تحليل الأداء، كل شيء مصمم لتزويدك بنظرة عامة واضحة ودقيقة عن عملياتك. بالإضافة إلى ذلك، فإن فريق الدعم لدينا متاح دائمًا لمساعدتك والإجابة على أسئلتك."
+
+
     },
 
 
@@ -167,6 +173,10 @@ class AppTranslations implements Translations{
       '77':'user-do-not-exists',
       '78':'User got deleted successfully',
       '79':'There is no product to export',
+      "80": "An Innovative Solution for Maritime Trade",
+      "81": "At Marssa Maroc, we understand the unique challenges faced by maritime trade professionals. That's why we have designed a mobile application that integrates the latest technologies to offer you an exceptional user experience. Our platform allows you to centralize all your operations, from document management to logistics coordination, and communication with your business partners. By simplifying these complex processes, we help you save time, reduce costs, and improve customer satisfaction.",
+      "82": "A Tool Designed for Your Needs",
+      "83": "Our application is designed to meet the specific needs of companies operating in the maritime sector. Whether you are an importer, an exporter, or a supplier, you will find the necessary features in our platform to optimize your supply chain. Shipment tracking, inventory management, performance analysis, everything is designed to provide you with a clear and precise overview of your operations. Additionally, our support team is always available to assist you and answer your questions."
     },
 
 
@@ -241,7 +251,7 @@ class AppTranslations implements Translations{
       '68': 'Ajouter un utilisateur',
       '69': 'Choisissez le type d\'utilisateur',
       '70': 'L\'utilisateur a été ajouté avec succès',
-      '71':'Veuillez sasir le type',
+      '71': 'Veuillez sasir le type',
       '72': 'Vous n\'êtes pas autorisé à vous inscrire',
       '73': 'L\'utilisateur existe déjà',
       '74': 'Supprimer',
@@ -249,7 +259,11 @@ class AppTranslations implements Translations{
       '76': 'Supprimer l\'utilisateur',
       '77': 'L\'utilisateur n\'existe pas',
       '78': 'L\'utilisateur a été supprimé avec succès',
-      '79': 'Il n\'y a aucun produit à exporter'
+      '79': 'Il n\'y a aucun produit à exporter',
+      '80': 'Une Solution Innovante pour le Commerce Maritime',
+      '81': "Chez Marssa Maroc, nous comprenons les défis uniques auxquels sont confrontés les acteurs du commerce maritime. C'est pourquoi nous avons conçu une application mobile qui intègre les dernières technologies pour vous offrir une expérience utilisateur exceptionnelle. Notre plateforme vous permet de centraliser toutes vos opérations, de la gestion des documents à la coordination logistique, en passant par la communication avec vos partenaires commerciaux. En simplifiant ces processus complexes, nous vous aidons à gagner du temps, à réduire les coûts et à améliorer la satisfaction de vos clients.",
+      '82': "Un Outil Conçu pour Vos Besoins",
+      '83': "Notre application est conçue pour répondre aux besoins spécifiques des entreprises opérant dans le secteur maritime. Que vous soyez un importateur, un exportateur ou un fournisseur, vous trouverez dans notre plateforme les fonctionnalités nécessaires pour optimiser votre chaîne d'approvisionnement. Suivi des expéditions, gestion des stocks, analyse des performances, tout est pensé pour vous offrir une vue d'ensemble claire et précise de vos opérations. De plus, notre équipe de support est toujours à votre disposition pour vous accompagner et répondre à vos questions."
     }
   };
 }

@@ -21,6 +21,7 @@ class MainScreen extends GetView{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
       bottomNavigationBar: CustomBottomBar(_pageController),
       body: PageView(
         onPageChanged: (selectedIndex){
