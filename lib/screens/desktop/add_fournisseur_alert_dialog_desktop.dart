@@ -74,11 +74,11 @@ class AddFournisseurDesktopAlertDialog {
                               children: 
                               [
                                
-                                Expanded(child: CustomTextField.names(label: '30'.tr, controller: nomController)),
+                                CustomTextField.names(label: '30'.tr, controller: nomController),
                                 const SizedBox(height: 12,),
-                                Expanded(child: CustomTextField.email(controller: emailController)),
+                                CustomTextField.email(controller: emailController),
                                 const SizedBox(height: 12,),
-                                Expanded(child: CustomTextField.phoneNumber( controller: numeroController)),
+                                CustomTextField.phoneNumber( controller: numeroController),
                                 
                               ],
                             ),

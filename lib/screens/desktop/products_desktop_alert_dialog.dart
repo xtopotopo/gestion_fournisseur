@@ -107,9 +107,9 @@ class ProduitDesktopAlertDialog {
                           child: ListView(
                             children: 
                             [
-                              Expanded(child: CustomTextField.names(label: '30'.tr, controller: nomController,)),
+                              CustomTextField.names(label: '30'.tr, controller: nomController,),
                               const SizedBox(height: 12,),
-                              Expanded(child: CustomTextField.text(controller: descriptionController, label: '35'.tr,)),
+                              CustomTextField.text(controller: descriptionController, label: '35'.tr,),
                               const SizedBox(height: 12,),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -120,9 +120,9 @@ class ProduitDesktopAlertDialog {
                                 ],
                               ),
                               const SizedBox(height: 12,),
-                              Expanded(child: CustomTextField.number( controller: prixUniteController, label: '37'.tr,)),
+                              CustomTextField.number( controller: prixUniteController, label: '37'.tr,),
                               const SizedBox(height: 12,),
-                              Expanded(child: CustomTextField.date( controller: dateController,)),
+                              CustomTextField.date( controller: dateController,),
                               
                             ],
                           ),
